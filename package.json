@@ -20,7 +20,11 @@
   },
   "scripts": {
     "i18n": "wpi18n addtextdomain && composer run i18n",
-    "lint": "npx yamllint **/*.yml --ignore=node_modules/**"
+    "lint": "npx yamllint **/*.yml --ignore=node_modules/**",
+    "create:dist": "rsync -r --exclude-from=.distignore . ./mojo-marketplace-wp-plugin",
+    "php-deps": "composer install --no-dev --optimize-autoloader",
+    "create:zip": "cd ./mojo-marketplace-wp-plugin && zip -r -9 ../mojo-marketplace-wp-plugin.zip . && ls -lh ../mojo-marketplace-wp-plugin.zip",
+    "simulate-runner-build": "rm -rf ./mojo-marketplace-wp-plugin ./mojo-marketplace-wp-plugin.zip ./vendor && npm i && npm run php-deps && npm run create:dist && npm run create:zip"
   },
   "husky": {
     "hooks": {

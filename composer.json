@@ -17,15 +17,17 @@
     "source": "https://github.com/bluehost/mojo-marketplace-wp-plugin",
     "issues": "https://github.com/bluehost/mojo-marketplace-wp-plugin/issues"
   },
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://bluehost.github.io/satis/",
-      "only": [
-        "bluehost/*"
-      ]
-    }
-  ],
+  "repositories": {
+    "0":
+      {
+        "type": "composer",
+        "url": "https://bluehost.github.io/satis/",
+        "only": [
+          "bluehost/*",
+          "endurance/*"
+        ]
+      }
+  },
   "require": {
     "bluehost/endurance-wp-module-business-reviews": "^1.0",
     "bluehost/endurance-wp-module-gutenframe": "^0.1",
