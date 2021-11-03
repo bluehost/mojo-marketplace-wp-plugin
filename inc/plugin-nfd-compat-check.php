@@ -76,11 +76,11 @@ class NFD_Plugin_Compat_Check {
 	 * Displays an admin notice and deactivates the plugin if all requirements are not met.
 	 */
 	public function check_plugin_requirements() {
-		
+
 		if ( ! empty( $this->nfd_multibrand_plugins ) ) {
 			$this->check_forbidden_plugins();
 		}
-		
+
 		if ( ! empty( $this->callbacks ) ) {
 			foreach ( $this->callbacks as $callback ) {
 				if ( is_callable( $callback ) ) {
