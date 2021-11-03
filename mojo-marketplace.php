@@ -2,7 +2,7 @@
 /**
  * Plugin Name: MOJO Marketplace
  * Description: This plugin adds shortcodes, widgets, and themes to your WordPress site.
- * Version: 1.5.8
+ * Version: 1.6
  * Author: Mike Hansen
  * Author URI: http://mikehansen.me?utm_campaign=plugin&utm_source=mojo_wp_plugin
  * Requires at least: 4.7
@@ -20,7 +20,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'MM_VERSION', '1.5.8' );
+define( 'MM_VERSION', '1.6' );
 define( 'MM_FILE', __FILE__ );
 define( 'MM_BASE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MM_BASE_URL', plugin_dir_url( __FILE__ ) );
@@ -39,7 +39,13 @@ if ( 'plugins.php' === $pagenow ) {
 	$plugin_check->check_plugin_requirements();
 }
 
+// Check NFD plugins
+require dirname( __FILE__ ) . '/inc/plugin-nfd-compat-check.php';
+$nfd_plugins_check = new NFD_Plugin_Compat_Check( __FILE__ );
+// Save val to abort loading if incompatabilities are found
+$pass_nfd_check = $nfd_plugins_check->check_plugin_requirements();
+
 // Check PHP version before initializing to prevent errors if plugin is incompatible.
-if ( version_compare( PHP_VERSION, '5.3', '>=' ) ) {
+if ( $pass_nfd_check && version_compare( PHP_VERSION, '5.3', '>=' ) ) {
 	require dirname( __FILE__ ) . '/bootstrap.php';
 }
