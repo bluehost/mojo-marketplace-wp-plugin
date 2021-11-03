@@ -1,6 +1,6 @@
 <?php
 /**
- * Class that runs checks before loading possibly incompatible code. 
+ * Class that runs checks before loading possibly incompatible code.
  *
  * @package Mojo Marketplace
  */
@@ -41,15 +41,13 @@ class NFD_Plugin_Compat_Check {
 	public $name = '';
 
 	/**
-	 * Newfold plugins if order of priority
-     * 
-     * 'Name' => 'slug'
+	 * Newfold plugins if order of priority ('Name' => 'slug')
 	 *
 	 * @var array
 	 */
-	public $nfd_multibrand_plugins = [
-        'Bluehost'   => 'bluehost-wordpress-plugin/bluehost-wordpress-plugin.php',
-    ];
+	public $nfd_multibrand_plugins = array(
+		'Bluehost' => 'bluehost-wordpress-plugin/bluehost-wordpress-plugin.php',
+	);
 
 	/**
 	 * Setup our class properties
@@ -96,10 +94,10 @@ class NFD_Plugin_Compat_Check {
 			$this->deactivate();
 			add_action( 'admin_notices', array( $this, 'admin_notices' ) );
 
-            return false;
+			return false;
 		}
 
-        return true;
+		return true;
 	}
 
 	/**
@@ -107,8 +105,8 @@ class NFD_Plugin_Compat_Check {
 	 */
 	public function check_forbidden_plugins() {
 		foreach ( $this->nfd_multibrand_plugins as $name => $plugin ) {
-            require_once ABSPATH . '/wp-admin/includes/plugin.php';
-            if ( function_exists( 'is_plugin_active' ) && is_plugin_active( $plugin ) ) {
+			require_once ABSPATH . '/wp-admin/includes/plugin.php';
+			if ( function_exists( 'is_plugin_active' ) && is_plugin_active( $plugin ) ) {
 				$this->errors->add(
 					'nfd_plugin',
 					/* translators: 1: plugin name 2: forbidden plugin */
