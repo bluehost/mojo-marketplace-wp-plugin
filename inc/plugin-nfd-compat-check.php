@@ -45,7 +45,7 @@ class NFD_Plugin_Compat_Check {
 	 *
 	 * @var array
 	 */
-	public $nfd_multibrand_plugins = array(
+	public $nfd_incompatible_plugins = array(
 		'Bluehost' => 'bluehost-wordpress-plugin/bluehost-wordpress-plugin.php',
 	);
 
@@ -77,8 +77,8 @@ class NFD_Plugin_Compat_Check {
 	 */
 	public function check_plugin_requirements() {
 
-		if ( ! empty( $this->nfd_multibrand_plugins ) ) {
-			$this->check_forbidden_plugins();
+		if ( ! empty( $this->nfd_incompatible_plugins ) ) {
+			$this->check_incompatible_plugins();
 		}
 
 		if ( ! empty( $this->callbacks ) ) {
@@ -101,16 +101,16 @@ class NFD_Plugin_Compat_Check {
 	}
 
 	/**
-	 * Check if a forbidden plugin is active.
+	 * Check if a incompatible plugin is active.
 	 */
-	public function check_forbidden_plugins() {
-		foreach ( $this->nfd_multibrand_plugins as $name => $plugin ) {
+	public function check_incompatible_plugins() {
+		foreach ( $this->nfd_incompatible_plugins as $incompatible_name => $incompatible_plugin ) {
 			require_once ABSPATH . '/wp-admin/includes/plugin.php';
-			if ( function_exists( 'is_plugin_active' ) && is_plugin_active( $plugin ) ) {
+			if ( function_exists( 'is_plugin_active' ) && is_plugin_active( $incompatible_plugin ) ) {
 				$this->errors->add(
 					'nfd_plugin',
-					/* translators: 1: plugin name 2: forbidden plugin */
-					sprintf( __( 'The "%1$s" plugin is incompatible with the "%2$s" plugin.', 'mojo-marketplace-wp-plugin' ), $this->name, $name )
+					/* translators: 1: plugin name 2: incompatible plugin */
+					sprintf( __( 'The "%1$s" plugin is incompatible with the "%2$s" plugin.', 'mojo-marketplace-wp-plugin' ), $this->name, $incompatible_name )
 				);
 			}
 		}
