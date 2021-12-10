@@ -5,17 +5,19 @@
 	<?php
 	printf(
 	/* translators: %s: Blog name */
-		__( '%s &mdash; Coming Soon', 'mojo-marketplace-wp-plugin' ),
-		get_option( 'blogname' )
+		esc_html( '%s &mdash; Coming Soon', 'mojo-marketplace-wp-plugin' ),
+		esc_html( get_option( 'blogname' ) )
 	);
 	?>
 </title>
+<?php // phpcs:disable WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet ?>
 <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
-<?php echo mm_cs_meta(); ?>
+<?php // phpcs:enable ?>
+<?php echo esc_html( mm_cs_meta() ); ?>
 <style type='text/css'>
 body{
 	background-color: #2D2A25;
-	background-image: url( <?php echo MM_BASE_URL . 'images/cs-mojo-bg.jpg'; ?> );
+	background-image: url( <?php echo esc_url( MM_BASE_URL . 'images/cs-mojo-bg.jpg' ); ?> );
 	background-position: top right;
 	background-repeat: no-repeat;
 	font-family: 'Montserrat', sans-serif;
@@ -29,7 +31,12 @@ a{
 	max-width: 900px;
 	margin: 0 auto;
 }
-#logo{height: auto;width: 204px;padding: 30px 10px 10px 10px;max-width: 90%;}
+#logo{
+	height: auto;
+	width: 204px;
+	padding: 30px 10px 10px 10px;
+	max-width: 90%;
+}
 .cta{
 	background-color: #93C933;
 	color: #35393A;
@@ -88,7 +95,13 @@ footer li{
 	color: #aaa;
 	padding: 50px;
 }
-.btn{display: inline-block;margin-top:50px;text-align:center;padding: 10px 50px; border-radius: 3px;}
+.btn{
+	display: inline-block;
+	margin-top:50px;
+	text-align:center;
+	padding: 10px 50px;
+	border-radius: 3px;
+}
 .green{
 	color: #343537;
 	background: #92c835; /* Old browsers */
@@ -100,8 +113,17 @@ footer li{
 	background: linear-gradient(to bottom,  #92c835 0%,#6d9628 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#92c835', endColorstr='#6d9628',GradientType=0 ); /* IE6-9 */
 }
-#what-is-this-content a{width: 50%;display:inline-block;color: #666;text-align:center;}
-.footer-actions a{width: 50%; text-align:center; display:inline-block;}
+#what-is-this-content a{
+	width: 50%;
+	display:inline-block;
+	color: #666;
+	text-align:center;
+}
+.footer-actions a{
+	width: 50%;
+	text-align:center;
+	display:inline-block;
+}
 .split-content > div:first-of-type{
 	padding-right: 10%;
 }
@@ -149,7 +171,7 @@ footer li{
 				);
 				?>
 		</p>
-		<a class='btn green' href='<?php echo site_url( 'wp-login.php' ); ?>'><?php esc_html_e( 'Admin Login', 'mojo-marketplace-wp-plugin' ); ?></a>
+		<a class='btn green' href='<?php echo esc_url( site_url( 'wp-login.php' ) ); ?>'><?php esc_html_e( 'Admin Login', 'mojo-marketplace-wp-plugin' ); ?></a>
 		<div class='split-content'>
 			<div>
 				<h3><?php esc_html_e( 'Just visiting?', 'mojo-marketplace-wp-plugin' ); ?></h3>
@@ -211,7 +233,7 @@ footer li{
 			</ul>
 		</div>
 		<div class='footer-actions'>
-			<a href='<?php echo site_url( 'wp-login.php' ); ?>'><?php esc_html_e( 'Login', 'mojo-marketplace-wp-plugin' ); ?></a>
+			<a href='<?php echo esc_url( site_url( 'wp-login.php' ) ); ?>'><?php esc_html_e( 'Login', 'mojo-marketplace-wp-plugin' ); ?></a>
 			<a href='#' id='what-is-this' onClick='what_is_this_show()'><?php esc_html_e( 'What is this?', 'mojo-marketplace-wp-plugin' ); ?></a>
 		</div>
 	</footer>
@@ -221,7 +243,7 @@ footer li{
 	<p><?php esc_html_e( 'If you are the site owner and are finished building the site you can click the link in the banner of the administration panel to disable it.', 'mojo-marketplace-wp-plugin' ); ?></p>
 	<div>
 		<a href='#' onClick='what_is_this_hide()'><?php esc_html_e( 'close', 'mojo-marketplace-wp-plugin' ); ?></a>
-		<a href='<?php echo site_url( 'wp-login.php' ); ?>'><?php esc_html_e( 'login', 'mojo-marketplace-wp-plugin' ); ?></a>
+		<a href='<?php echo esc_url( site_url( 'wp-login.php' ) ); ?>'><?php esc_html_e( 'login', 'mojo-marketplace-wp-plugin' ); ?></a>
 	</div>
 </div>
 <script type='text/javascript'>
@@ -232,8 +254,8 @@ function what_is_this_hide() {
 	document.getElementById('what-is-this-content').style.display = 'none';
 }
 function bookmark() {
-	var title = '<?php echo get_bloginfo( 'name', 'display' ); ?>';
-	var url = '<?php echo site_url(); ?>';
+	var title = '<?php echo esc_html( get_bloginfo( 'name', 'display' ) ); ?>';
+	var url = '<?php echo esc_url( site_url() ); ?>';
 	if ( window.sidebar && window.sidebar.addPanel ) {
 		window.sidebar.addPanel( title, href, '' );
 	} else if( window.external && ( 'AddFavorite' in window.external ) ) {
