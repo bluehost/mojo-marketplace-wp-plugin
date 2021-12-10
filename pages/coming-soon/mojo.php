@@ -142,9 +142,10 @@ footer li{
 		<p>
 			<?php
 				printf(
-					/* translators: %s: MOJO Marketplace explore URL */
-					esc_html__( 'This page is used to test the proper operation of your recent <a class="highlight" href="%s">MOJO Marketplace</a> installation of WordPress! If you can read this page it means your installation was successful!', 'mojo-marketplace-wp-plugin' ),
-					esc_url( 'https://www.mojomarketplace.com/explore?utm_source=mojo_wp_plugin&utm_campaign=mojo_wp_plugin&utm_medium=plugin_landing&utm_content=description_link' )
+					/* translators: %1$s is replaced with opening link tag for MOJO Marketplace website, %2$s is replaced with closing link tag */
+					esc_html__( 'This page is used to test the proper operation of your recent %1$sMOJO Marketplace%2$s installation of WordPress! If you can read this page it means your installation was successful!', 'mojo-marketplace-wp-plugin' ),
+					'<a class="highlight" href="' . esc_url( 'https://www.mojomarketplace.com/explore?utm_source=mojo_wp_plugin&utm_campaign=mojo_wp_plugin&utm_medium=plugin_landing&utm_content=description_link' ) . '">',
+					'</a>'
 				);
 				?>
 		</p>
