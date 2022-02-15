@@ -2,7 +2,7 @@
 /**
  * Plugin Name: MOJO Marketplace
  * Description: This plugin adds shortcodes, widgets, and themes to your WordPress site.
- * Version: 1.6.1
+ * Version: 1.6.2
  * Author: Mike Hansen
  * Author URI: http://mikehansen.me?utm_campaign=plugin&utm_source=mojo_wp_plugin
  * Requires at least: 4.7

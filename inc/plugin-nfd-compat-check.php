@@ -47,6 +47,7 @@ class NFD_Plugin_Compat_Check {
 	 */
 	public $nfd_incompatible_plugins = array(
 		'Bluehost' => 'bluehost-wordpress-plugin/bluehost-wordpress-plugin.php',
+		'HostGator' => 'hostgator-wordpress-plugin/hostgator-wordpress-plugin.php',
 	);
 
 	/**
