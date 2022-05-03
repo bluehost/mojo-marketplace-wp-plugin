@@ -45,7 +45,11 @@
   "config": {
       "optimize-autoloader": true,
       "sort-packages": true,
-      "platform-check": false
+      "platform-check": false,
+    "allow-plugins": {
+      "cweagans/composer-patches": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
   },
   "scripts": {
     "fix": [

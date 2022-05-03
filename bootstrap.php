@@ -25,15 +25,11 @@ add_action( 'plugins_loaded', 'mojo_marketplace_load_plugin_textdomain' );
 require dirname( __FILE__ ) . '/vendor/autoload.php';
 
 require_once MM_BASE_DIR . 'inc/base.php';
-require_once MM_BASE_DIR . 'inc/checkout.php';
 require_once MM_BASE_DIR . 'inc/menu.php';
 require_once MM_BASE_DIR . 'inc/shortcode-generator.php';
-require_once MM_BASE_DIR . 'inc/mojo-themes.php';
 require_once MM_BASE_DIR . 'inc/styles.php';
-require_once MM_BASE_DIR . 'inc/plugin-search.php';
 require_once MM_BASE_DIR . 'inc/jetpack.php';
 require_once MM_BASE_DIR . 'inc/user-experience-tracking.php';
-require_once MM_BASE_DIR . 'inc/notifications.php';
 require_once MM_BASE_DIR . 'inc/staging.php';
 require_once MM_BASE_DIR . 'inc/updates.php';
 require_once MM_BASE_DIR . 'inc/coming-soon.php';
