@@ -1,12 +1,12 @@
 <?php
 function mm_admin_style() {
-	wp_enqueue_style( 'mojo-admin-css', MM_ASSETS_URL . 'css/style.css' );
+	wp_enqueue_style( 'mojo-admin-css', MM_BASE_URL . 'assets/css/style.css' );
 	if ( isset( $_GET['page'] ) && false !== strpos( $_GET['page'], 'mojo-' ) ) {
 		wp_enqueue_style( 'mojo-admin-roboto-css', 'https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500' );
-		wp_enqueue_style( 'mojo-admin-bootstrap-css', MM_ASSETS_URL . 'css/bootstrap.css' );
-		wp_enqueue_style( 'mojo-admin-main-css', MM_ASSETS_URL . 'css/main.css' );
-		wp_enqueue_script( 'mojo-admin-main-js', MM_ASSETS_URL . 'js/main.js', 'jquery' );
-		wp_enqueue_script( 'mojo-admin-bootstrap-js', MM_ASSETS_URL . 'js/bootstrap.min.js', 'jquery' );
+		wp_enqueue_style( 'mojo-admin-bootstrap-css', MM_BASE_URL . 'assets/css/bootstrap.css' );
+		wp_enqueue_style( 'mojo-admin-main-css', MM_BASE_URL . 'assets/css/main.css' );
+		wp_enqueue_script( 'mojo-admin-main-js', MM_BASE_URL . 'assets/js/main.js', 'jquery' );
+		wp_enqueue_script( 'mojo-admin-bootstrap-js', MM_BASE_URL . 'assets/js/bootstrap.min.js', 'jquery' );
 		wp_enqueue_style( 'mojo-admin-bluerock-css', MM_BASE_URL . 'assets/css/bluerock.css' );
 	}
 }
@@ -25,7 +25,7 @@ function mm_frontend_style() {
 	global $use_mm_styles;
 	if ( $use_mm_styles ) {
 		?>
-		<link rel='stylesheet' id='mojo-frontent-css'  href='<?php echo MM_ASSETS_URL . 'css/front-end.css'; ?>' type='text/css' media='all' />
+		<link rel='stylesheet' id='mojo-frontent-css'  href='<?php echo MM_BASE_URL . 'assets/css/front-end.css'; ?>' type='text/css' media='all' />
 		<?php
 	}
 }

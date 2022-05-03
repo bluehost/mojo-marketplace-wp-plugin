@@ -11,7 +11,6 @@
 			);
 			?>
 		</title>
-		<?php echo mm_cs_meta(); // phpcs:ignore ?>
 		<script
 			src="<?php echo esc_url( includes_url( 'js/jquery/jquery.js' ) ); // phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript ?>"></script>
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet"><?php // phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet ?>
