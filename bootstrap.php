@@ -6,6 +6,10 @@
  */
 
 use Endurance_WP_Plugin_Updater\Updater;
+use NewfoldLabs\WP\ModuleLoader\Container;
+use NewfoldLabs\WP\ModuleLoader\Plugin;
+
+use function NewfoldLabs\WP\ModuleLoader\container as setContainer;
 
 // Do not access file directly!
 if ( ! defined( 'WPINC' ) ) {
@@ -23,6 +27,28 @@ add_action( 'plugins_loaded', 'mojo_marketplace_load_plugin_textdomain' );
 
 // Composer autoloader
 require dirname( __FILE__ ) . '/vendor/autoload.php';
+
+/*
+ * Initialize container
+ */
+$mojo_container = new Container();
+
+// Set plugin to container
+$mojo_container->set(
+	'plugin',
+	$mojo_container->service(
+		function () {
+			return new Plugin(
+				array(
+					'id'   => 'mojo',
+					'file' => MM_FILE,
+				)
+			);
+		}
+	)
+);
+
+setContainer( $mojo_container );
 
 require_once MM_BASE_DIR . 'inc/base.php';
 require_once MM_BASE_DIR . 'inc/menu.php';

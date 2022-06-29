@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "36b060f75b991ecdd9d1a0d57875e183",
+    "content-hash": "2b5468af71efd5f2fa7f77fae6e98a2e",
     "packages": [
         {
             "name": "bluehost/endurance-wp-module-business-reviews",
@@ -251,53 +251,6 @@
             "time": "2021-04-29T21:17:42+00:00"
         },
         {
-            "name": "endurance/wp-module-data",
-            "version": "1.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bluehost/endurance-wp-module-data.git",
-                "reference": "2a1ffd0b1b68981da37517b9aa38580c962cd362"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bluehost/endurance-wp-module-data/zipball/2a1ffd0b1b68981da37517b9aa38580c962cd362",
-                "reference": "2a1ffd0b1b68981da37517b9aa38580c962cd362",
-                "shasum": ""
-            },
-            "require": {
-                "wpscholar/url": "^1.2"
-            },
-            "require-dev": {
-                "bluehost/wp-php-standards": "^1.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Endurance\\WP\\Module\\Data\\": "src"
-                },
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
-            "scripts": {
-                "fix": [
-                    "vendor/bin/phpcbf . --standard=Bluehost"
-                ],
-                "lint": [
-                    "vendor/bin/phpcs . --standard=Bluehost -s"
-                ]
-            },
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "description": "Endurance Data Module",
-            "support": {
-                "source": "https://github.com/bluehost/endurance-wp-module-data/tree/1.9",
-                "issues": "https://github.com/bluehost/endurance-wp-module-data/issues"
-            },
-            "time": "2022-06-21T17:39:48+00:00"
-        },
-        {
             "name": "newfold-labs/wp-module-data",
             "version": "2.1",
             "source": {
@@ -343,6 +296,52 @@
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
             "time": "2022-06-21T17:38:17+00:00"
+        },
+        {
+            "name": "newfold-labs/wp-module-loader",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newfold-labs/wp-module-loader.git",
+                "reference": "0a4f6014040f06bc3e7c4c593d5c87bbc0b6544f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-loader/zipball/0a4f6014040f06bc3e7c4c593d5c87bbc0b6544f",
+                "reference": "0a4f6014040f06bc3e7c4c593d5c87bbc0b6544f",
+                "shasum": ""
+            },
+            "require": {
+                "wp-forge/container": "^1.0",
+                "wp-forge/fluent": "^1.0",
+                "wp-forge/wp-options": "^1.0",
+                "wpscholar/collection": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NewfoldLabs\\WP\\ModuleLoader\\": "includes"
+                },
+                "files": [
+                    "bootstrap.php",
+                    "includes/functions.php"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Micah Wood",
+                    "email": "micah@wpscholar.com"
+                }
+            ],
+            "description": "A module that handles registration and management of Newfold modules used within our WordPress plugins.",
+            "support": {
+                "source": "https://github.com/newfold-labs/wp-module-loader/tree/1.0.4",
+                "issues": "https://github.com/newfold-labs/wp-module-loader/issues"
+            },
+            "time": "2022-05-02T20:45:29+00:00"
         },
         {
             "name": "newfold-labs/wp-module-marketplace",
@@ -445,27 +444,22 @@
         },
         {
             "name": "psr/container",
-            "version": "2.0.2",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/container.git",
-                "reference": "c71ecc56dfe541dbd90c5360474fbc405f8d5963"
+                "reference": "513e0666f7216c7459170d56df27dfcefe1689ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/container/zipball/c71ecc56dfe541dbd90c5360474fbc405f8d5963",
-                "reference": "c71ecc56dfe541dbd90c5360474fbc405f8d5963",
+                "url": "https://api.github.com/repos/php-fig/container/zipball/513e0666f7216c7459170d56df27dfcefe1689ea",
+                "reference": "513e0666f7216c7459170d56df27dfcefe1689ea",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.4.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Psr\\Container\\": "src/"
@@ -492,9 +486,160 @@
             ],
             "support": {
                 "issues": "https://github.com/php-fig/container/issues",
-                "source": "https://github.com/php-fig/container/tree/2.0.2"
+                "source": "https://github.com/php-fig/container/tree/1.1.2"
             },
-            "time": "2021-11-05T16:47:00+00:00"
+            "time": "2021-11-05T16:50:12+00:00"
+        },
+        {
+            "name": "wp-forge/container",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wp-forge/container.git",
+                "reference": "e76a208d048b163dcb23068b149e16bdcfabc901"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wp-forge/container/zipball/e76a208d048b163dcb23068b149e16bdcfabc901",
+                "reference": "e76a208d048b163dcb23068b149e16bdcfabc901",
+                "shasum": ""
+            },
+            "require": {
+                "psr/container": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WP_Forge\\Container\\": "includes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Micah Wood",
+                    "email": "micah@wpscholar.com"
+                }
+            ],
+            "description": "A lightweight, PHP 5.4+ compatible, PSR-11 dependency injection container.",
+            "support": {
+                "issues": "https://github.com/wp-forge/container/issues",
+                "source": "https://github.com/wp-forge/container/tree/1.0"
+            },
+            "time": "2020-03-22T22:42:37+00:00"
+        },
+        {
+            "name": "wp-forge/fluent",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wp-forge/fluent.git",
+                "reference": "ecc5f31981ddfacf4de5d64eea1c9ef567cb4e97"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wp-forge/fluent/zipball/ecc5f31981ddfacf4de5d64eea1c9ef567cb4e97",
+                "reference": "ecc5f31981ddfacf4de5d64eea1c9ef567cb4e97",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WP_Forge\\Fluent\\": "includes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Micah Wood",
+                    "email": "micah@wpscholar.com"
+                }
+            ],
+            "description": "An instance of the Laravel Fluent class for use with WordPress.",
+            "support": {
+                "issues": "https://github.com/wp-forge/fluent/issues",
+                "source": "https://github.com/wp-forge/fluent/tree/1.0"
+            },
+            "time": "2022-03-03T21:50:32+00:00"
+        },
+        {
+            "name": "wp-forge/wp-options",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wp-forge/wp-options.git",
+                "reference": "df8899255dee19365599caa8801c75803e94e413"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wp-forge/wp-options/zipball/df8899255dee19365599caa8801c75803e94e413",
+                "reference": "df8899255dee19365599caa8801c75803e94e413",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WP_Forge\\Options\\": "includes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Micah Wood",
+                    "email": "micah@wpscholar.com"
+                }
+            ],
+            "description": "A WordPress helper class for managing plugin options.",
+            "support": {
+                "issues": "https://github.com/wp-forge/wp-options/issues",
+                "source": "https://github.com/wp-forge/wp-options/tree/1.1"
+            },
+            "time": "2022-03-04T16:23:42+00:00"
+        },
+        {
+            "name": "wpscholar/collection",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wpscholar/collection.git",
+                "reference": "3011b28e5e627ea6bc131ecfa93d78210d107415"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wpscholar/collection/zipball/3011b28e5e627ea6bc131ecfa93d78210d107415",
+                "reference": "3011b28e5e627ea6bc131ecfa93d78210d107415",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "wpscholar\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Micah Wood",
+                    "email": "micah@wpscholar.com"
+                }
+            ],
+            "description": "A PHP utility class for manipulating collections.",
+            "support": {
+                "issues": "https://github.com/wpscholar/collection/issues",
+                "source": "https://github.com/wpscholar/collection/tree/1.0.1"
+            },
+            "time": "2022-03-22T10:54:37+00:00"
         },
         {
             "name": "wpscholar/url",
