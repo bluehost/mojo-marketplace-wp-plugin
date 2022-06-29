@@ -40,7 +40,7 @@ function mm_main_menu_fix_subdomain_label() {
 	if ( isset( $submenu['mojo-marketplace'] ) && is_array( $submenu['mojo-marketplace'] ) ) {
 		if ( $submenu['mojo-marketplace'][0][2] === 'mojo-marketplace' ) {
 			if ( 'bluehost' == mm_brand() || 'bluehost-india' == mm_brand() ) {
-				$submenu['mojo-marketplace'][0][0] = __( 'Home' );
+				$submenu['mojo-marketplace'][0][0] = __( 'Home', 'mojo-marketplace-wp-plugin' );
 			} else {
 				unset( $submenu['mojo-marketplace'][0] );
 			}
