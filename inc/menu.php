@@ -94,13 +94,7 @@ function mm_add_tool_bar_items( $admin_bar ) {
 add_action( 'admin_bar_menu', 'mm_add_tool_bar_items', 100 );
 
 function mm_marketplace_page() {
-	$valid_sections = array( 'performance' );
-	if ( isset( $_GET['section'] ) && in_array( $_GET['section'], $valid_sections ) ) {
-		$section = sanitize_key( $_GET['section'] );
-	} else {
-		$section = 'performance';
-	}
-	mm_require( MM_BASE_DIR . 'pages/mojo-' . $section . '.php' );
+	mm_require( MM_BASE_DIR . 'pages/mojo-marketplace.php' );
 }
 
 function mm_plugins_premium_link() {
@@ -117,6 +111,7 @@ add_action( 'admin_head-plugin-install.php', 'mm_plugins_premium_link' );
 
 function mm_performance_menu() {
 	add_submenu_page( 'mojo-marketplace', esc_html__( 'Performance', 'mojo-marketplace-wp-plugin' ), esc_html__( 'Performance', 'mojo-marketplace-wp-plugin' ), 'manage_options', 'mojo-performance', 'mm_performance_page' );
+	add_submenu_page( 'mojo-marketplace', esc_html__( 'Marketplace', 'mojo-marketplace-wp-plugin' ), esc_html__( 'Marketplace', 'mojo-marketplace-wp-plugin' ), 'manage_options', 'mojo-marketplace-page', 'mm_marketplace_page' );
 }
 
 add_action( 'admin_menu', 'mm_performance_menu' );
