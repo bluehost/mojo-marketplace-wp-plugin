@@ -18,12 +18,19 @@
     "issues": "https://github.com/bluehost/mojo-marketplace-wp-plugin/issues"
   },
   "repositories": {
-    "0": {
+    "bluehost-satis": {
       "type": "composer",
       "url": "https://bluehost.github.io/satis/",
       "only": [
         "bluehost/*",
         "endurance/*"
+      ]
+    },
+    "newfold-satis": {
+      "type": "composer",
+      "url": "https://newfold-labs.github.io/satis/",
+      "only": [
+        "newfold-labs/*"
       ]
     }
   },
