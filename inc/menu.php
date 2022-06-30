@@ -201,3 +201,33 @@ function mm_menu_redirects() {
 }
 
 add_action( 'admin_init', 'mm_menu_redirects' );
+
+add_action( 'admin_enqueue_scripts', 'mm_enqueue_scripts' );
+
+function mm_enqueue_scripts() {
+	wp_enqueue_style(
+		'mojo-marketplace',
+		plugins_url( 'build/marketplace.css', MM_FILE )
+	);
+	wp_enqueue_script(
+		'mojo-marketplace',
+		plugins_url( 'build/marketplace.js', MM_FILE ),
+		[
+			'wp-api-fetch',
+			'wp-components',
+			'wp-dom-ready',
+			'wp-element',
+			'wp-i18n',
+		],
+		false,
+		true
+	);
+	wp_localize_script(
+		'mojo-marketplace',
+		'mojo',
+		[
+			'restUrl'   => esc_url_raw( rest_url() ),
+			'restNonce' => wp_create_nonce( 'wp_rest' )
+		]
+	);
+}

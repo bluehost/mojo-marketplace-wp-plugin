@@ -13,12 +13,15 @@
   "author": "Micah Wood <micah@wpscholar.com>",
   "license": "GPL-2.0+",
   "devDependencies": {
+    "@wordpress/scripts": "^23.4.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.1.7",
     "node-wp-i18n": "^1.2.3",
     "yaml-lint": "^1.2.4"
   },
   "scripts": {
+    "build": "wp-scripts build src/marketplace.js --output-path=build",
+    "start": "NODE_ENV=develop wp-scripts start src/marketplace.js --output-path=build",
     "i18n": "wpi18n addtextdomain && composer run i18n",
     "lint": "npx yamllint **/*.yml --ignore=node_modules/**",
     "create:dist": "rsync -r --exclude-from=.distignore . ./mojo-marketplace-wp-plugin",
@@ -38,5 +41,8 @@
     "**/*.php": [
       "vendor/bin/phpcs --standard=Bluehost -s"
     ]
+  },
+  "dependencies": {
+    "classnames": "^2.3.1"
   }
 }
