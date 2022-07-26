@@ -48,6 +48,14 @@ $mojo_container->set(
 	)
 );
 
+// Set marketplace brand from mm_brand and hg_region values in container
+if ( get_option( 'mm_brand', false ) ) {
+	$mojo_container->set(
+		'marketplace_brand',
+		strtolower( get_option( 'mm_brand', false ) )
+	);
+}
+
 setContainer( $mojo_container );
 
 require_once MM_BASE_DIR . 'inc/base.php';
