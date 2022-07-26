@@ -226,7 +226,7 @@ function mm_enqueue_scripts() {
 		'mojo-marketplace',
 		'mojo',
 		[
-			'restUrl'   => esc_url_raw( rest_url() ),
+			'restUrl'   => get_home_url() . '/index.php?rest_route=',
 			'restNonce' => wp_create_nonce( 'wp_rest' )
 		]
 	);
