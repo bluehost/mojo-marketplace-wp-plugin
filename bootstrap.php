@@ -52,6 +52,8 @@ if ( version_compare( PHP_VERSION, '5.3.29' ) >= 0 ) {
 mm_require( MM_BASE_DIR . 'inc/admin-page-notifications-blocker.php' );
 
 // Set up the updater endpoint and map values
+// v1: https://hiive.cloud/workers/release-api/plugins/bluehost/mojo-marketplace-wp-plugin?file=mojo-marketplace.php
+// v2: https://hiive.cloud/workers/release-api/plugins/newfold-labs/wp-plugin-mojo
 $mojoUpdateurl     = 'https://hiive.cloud/workers/release-api/plugins/newfold-labs/wp-plugin-mojo'; // Custom API GET endpoint
 $mojoPluginUpdater = new PluginUpdater( MM_FILE, $mojoUpdateurl );
 $mojoPluginUpdater->setDataMap(
