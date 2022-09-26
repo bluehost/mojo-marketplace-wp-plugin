@@ -54,9 +54,9 @@ mm_require( MM_BASE_DIR . 'inc/admin-page-notifications-blocker.php' );
 // Set up the updater endpoint and map values
 // v1: https://hiive.cloud/workers/release-api/plugins/bluehost/mojo-marketplace-wp-plugin?file=mojo-marketplace.php
 // v2: https://hiive.cloud/workers/release-api/plugins/newfold-labs/wp-plugin-mojo
-$mojo_updateurl     = 'https://hiive.cloud/workers/release-api/plugins/newfold-labs/wp-plugin-mojo'; // Custom API GET endpoint
-$mojo_pluginUpdater = new PluginUpdater( MM_FILE, $mojo_updateurl );
-$mojo_pluginUpdater->setDataMap(
+$mojo_update_url     = 'https://hiive.cloud/workers/release-api/plugins/newfold-labs/wp-plugin-mojo'; // Custom API GET endpoint
+$mojo_plugin_updater = new PluginUpdater( MM_FILE, $mojo_update_url );
+$mojo_plugin_updater->setDataMap(
 	array(
 		'version'       => 'version.latest',
 		'download_link' => 'download',
