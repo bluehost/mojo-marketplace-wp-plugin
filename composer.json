@@ -46,6 +46,7 @@
       "sort-packages": true,
       "platform-check": false,
     "allow-plugins": {
+      "cweagans/composer-patches": true,
       "dealerdirect/phpcodesniffer-composer-installer": true
     }
   },
