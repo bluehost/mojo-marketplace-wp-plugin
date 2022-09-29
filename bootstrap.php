@@ -48,7 +48,7 @@ $mojo_container->set(
 	)
 );
 
-// Set marketplace brand from mm_brand and hg_region values in container
+// Set marketplace brand from mm_brand in container
 if ( get_option( 'mm_brand', false ) ) {
 	$mojo_container->set(
 		'marketplace_brand',

@@ -4,6 +4,8 @@ import apiFetch from '@wordpress/api-fetch';
 import classnames from 'classnames';
 import { useEffect } from 'react';
 import { useState } from '@wordpress/element';
+import { HashRouter as Router, useLocation, useNavigate } from 'react-router-dom';
+
 
 import { Button, Card, CardBody, CardHeader, CardFooter, CardMedia, TabPanel, Spinner } from '@wordpress/components';
 
@@ -11,38 +13,42 @@ import Marketplace from '../../vendor/newfold-labs/wp-module-marketplace/compone
 
 export const App = () => {
 	return (
-		<div className="wppw">
-			<Marketplace
-				Components={
-					{
-						Button,
-						Card,
-						CardBody,
-						CardFooter,
-						CardHeader,
-						CardMedia,
-						TabPanel,
-						Spinner
+		<Router>
+			<div className="mojo-app">
+				<Marketplace
+					Components={
+						{
+							Button,
+							Card,
+							CardBody,
+							CardFooter,
+							CardHeader,
+							CardMedia,
+							TabPanel,
+							Spinner
+						}
 					}
-				}
-				constants={
-					{
-						'resturl': window.mojo.restUrl,
-						'eventendpoint': '/newfold-data/v1/events/',
-						'perPage': 12,
-						'supportsCTB': false,
+					constants={
+						{
+							'resturl': window.mojo.restUrl,
+							'eventendpoint': '/newfold-data/v1/events/',
+							'perPage': 12,
+							'supportsCTB': false,
+						}
 					}
-				}
-				methods={
-					{
-						apiFetch,
-						classnames,
-						useEffect,
-						useState,
+					methods={
+						{
+							apiFetch,
+							classnames,
+							useEffect,
+							useState,
+							useNavigate,
+							useLocation
+						}
 					}
-				}
-			/>
-		</div>
+				/>
+			</div>
+		</Router>
 	);
 }
 
