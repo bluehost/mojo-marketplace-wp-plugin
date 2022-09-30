@@ -40,7 +40,7 @@ function mm_main_menu_fix_subdomain_label() {
 	if ( isset( $submenu['mojo-marketplace'] ) && is_array( $submenu['mojo-marketplace'] ) ) {
 		if ( $submenu['mojo-marketplace'][0][2] === 'mojo-marketplace' ) {
 			if ( 'bluehost' == mm_brand() || 'bluehost-india' == mm_brand() ) {
-				$submenu['mojo-marketplace'][0][0] = __( 'Home' );
+				$submenu['mojo-marketplace'][0][0] = __( 'Home', 'mojo-marketplace-wp-plugin' );
 			} else {
 				unset( $submenu['mojo-marketplace'][0] );
 			}
@@ -94,13 +94,7 @@ function mm_add_tool_bar_items( $admin_bar ) {
 add_action( 'admin_bar_menu', 'mm_add_tool_bar_items', 100 );
 
 function mm_marketplace_page() {
-	$valid_sections = array( 'performance' );
-	if ( isset( $_GET['section'] ) && in_array( $_GET['section'], $valid_sections ) ) {
-		$section = sanitize_key( $_GET['section'] );
-	} else {
-		$section = 'performance';
-	}
-	mm_require( MM_BASE_DIR . 'pages/mojo-' . $section . '.php' );
+	mm_require( MM_BASE_DIR . 'pages/mojo-marketplace.php' );
 }
 
 function mm_plugins_premium_link() {
@@ -117,6 +111,7 @@ add_action( 'admin_head-plugin-install.php', 'mm_plugins_premium_link' );
 
 function mm_performance_menu() {
 	add_submenu_page( 'mojo-marketplace', esc_html__( 'Performance', 'mojo-marketplace-wp-plugin' ), esc_html__( 'Performance', 'mojo-marketplace-wp-plugin' ), 'manage_options', 'mojo-performance', 'mm_performance_page' );
+	add_submenu_page( 'mojo-marketplace', esc_html__( 'Marketplace', 'mojo-marketplace-wp-plugin' ), esc_html__( 'Marketplace', 'mojo-marketplace-wp-plugin' ), 'manage_options', 'mojo-marketplace-page', 'mm_marketplace_page' );
 }
 
 add_action( 'admin_menu', 'mm_performance_menu' );
@@ -206,3 +201,33 @@ function mm_menu_redirects() {
 }
 
 add_action( 'admin_init', 'mm_menu_redirects' );
+
+add_action( 'admin_enqueue_scripts', 'mm_enqueue_scripts' );
+
+function mm_enqueue_scripts() {
+	wp_enqueue_style(
+		'mojo-marketplace',
+		plugins_url( 'build/marketplace.css', MM_FILE )
+	);
+	wp_enqueue_script(
+		'mojo-marketplace',
+		plugins_url( 'build/marketplace.js', MM_FILE ),
+		[
+			'wp-api-fetch',
+			'wp-components',
+			'wp-dom-ready',
+			'wp-element',
+			'wp-i18n',
+		],
+		false,
+		true
+	);
+	wp_localize_script(
+		'mojo-marketplace',
+		'mojo',
+		[
+			'restUrl'   => get_home_url() . '/index.php?rest_route=',
+			'restNonce' => wp_create_nonce( 'wp_rest' )
+		]
+	);
+}
