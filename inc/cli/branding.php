@@ -21,7 +21,7 @@ class EIG_WP_CLI_Branding extends EIG_WP_CLI_Command {
 	/**
 	 * @var string - Remote location of branding.json config file.
 	 */
-	protected static $api_branding_file = MM_ASSETS_URL . 'json/branding.json';
+	protected static $api_branding_file = MM_BASE_URL . 'assets/json/branding.json';
 
 	/**
 	 * @var string - User-provided action.

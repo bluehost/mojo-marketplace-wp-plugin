@@ -5,9 +5,9 @@ function mm_cache_toggle() {
 		$cache_level = (int) $_POST['cache_level'];
 		$response    = mm_cache_add( 'page' );
 
-		if ( isset( $response['status'] ) && 'success' == $response['status'] ) {
+		if ( isset( $response['status'] ) && 'success' === $response['status'] ) {
 			$update = update_option( 'endurance_cache_level', $cache_level );
-			if ( true == $update ) {
+			if ( true === $update ) {
 				$response = array(
 					'status'  => 'success',
 					'message' => esc_html__( 'Cache level updated successfully.', 'mojo-marketplace-wp-plugin' ),
@@ -25,10 +25,11 @@ function mm_cache_toggle() {
 			);
 		}
 
-		echo json_encode( $response );
+		echo wp_json_encode( $response );
 	}
 	die;
 }
+
 add_action( 'wp_ajax_mm_cache', 'mm_cache_toggle' );
 
 function mm_cache_add( $type = null ) {
@@ -64,7 +65,7 @@ function mm_cache_add( $type = null ) {
 				$response = array(
 					'status'  => 'success',
 					'message' => sprintf(
-						/* translators: %s: type of cache */
+					/* translators: %s: type of cache */
 						esc_html__( '%s cache added successfully.', 'mojo-marketplace-wp-plugin' ),
 						ucfirst( $type )
 					),
@@ -77,12 +78,13 @@ function mm_cache_add( $type = null ) {
 		$response = array(
 			'status'  => 'error',
 			'message' => sprintf(
-				/* translators: %s: type of cache */
+			/* translators: %s: type of cache */
 				esc_html__( 'Unable to add %s cache.', 'mojo-marketplace-wp-plugin' ),
 				ucfirst( $type )
 			),
 		);
 	}
+
 	return $response;
 
 }
@@ -104,7 +106,7 @@ function mm_cache_remove( $type = null ) {
 			$response = array(
 				'status'  => 'success',
 				'message' => sprintf(
-					/* translators: %s: type of cache */
+				/* translators: %s: type of cache */
 					esc_html__( '%s cache removed successfully.', 'mojo-marketplace-wp-plugin' ),
 					ucfirst( $type )
 				),
@@ -121,6 +123,7 @@ function mm_cache_remove( $type = null ) {
 			'message' => esc_html__( 'Cache file does not exist.', 'mojo-marketplace-wp-plugin' ),
 		);
 	}
+
 	return $response;
 }
 
@@ -137,13 +140,14 @@ function mm_php_edge_toggle() {
 			$php_handler_response = mm_php_edge_remove();
 		}
 
-		if ( 'success' == $php_handler_response['status'] ) {
+		if ( 'success' === $php_handler_response['status'] ) {
 			update_option( 'mm_php_edge_settings', $new_php_setting );
 		}
-		echo json_encode( $php_handler_response );
+		echo wp_json_encode( $php_handler_response );
 	}
 	die;
 }
+
 add_action( 'wp_ajax_mm_php_edge', 'mm_php_edge_toggle' );
 
 
@@ -175,7 +179,7 @@ function mm_php_edge_add( $new_php_setting, $type = null ) {
 					break;
 			}
 
-			if ( ! is_wp_error( $php_check ) && wp_remote_retrieve_response_code( $php_check ) == '200' ) {
+			if ( ! is_wp_error( $php_check ) && wp_remote_retrieve_response_code( $php_check ) === 200 ) {
 				$response = array(
 					'status'  => 'success',
 					'message' => sprintf(
@@ -199,6 +203,7 @@ function mm_php_edge_add( $new_php_setting, $type = null ) {
 			'message' => esc_html__( 'Unable to enable PHP Edge.', 'mojo-marketplace-wp-plugin' ),
 		);
 	}
+
 	return $response;
 }
 
@@ -223,5 +228,6 @@ function mm_php_edge_remove( $type = null ) {
 			'message' => esc_html__( 'PHP Edge file does not exist.', 'mojo-marketplace-wp-plugin' ),
 		);
 	}
+
 	return $response;
 }
