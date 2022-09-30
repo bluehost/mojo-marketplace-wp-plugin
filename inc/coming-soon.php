@@ -81,7 +81,6 @@ function mm_cs_notice_launch_message() {
 	<?php
 }
 
-
 function mm_cs_notice_launch() {
 	if ( isset( $_GET['mm_cs_launch'] ) ) {
 		update_option( 'mm_coming_soon', 'false' );
@@ -104,17 +103,6 @@ function mm_cs_load() {
 	}
 }
 add_action( 'template_redirect', 'mm_cs_load' );
-
-function mm_cs_meta() {
-	$meta = mm_api_cache( 'https://api.mojomarketplace.com/api/v1/meta/landing_page' );
-	if ( is_wp_error( $meta ) ) {
-		return;
-	}
-	if ( isset( $meta['body'] ) && '' != $meta['body'] ) {
-		return "<meta name='robots' content='noindex, nofollow' />";
-	}
-	return;
-}
 
 function mm_cs_enabled_callback( $args ) {
 		$value = get_option( $args['field'], 'false' );

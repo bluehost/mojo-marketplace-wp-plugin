@@ -1,5 +1,5 @@
 <?php
-$nav = sanitize_key( $_GET['page'] );
+$nav = sanitize_key( $_GET['page'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 switch ( $nav ) {
 	case 'mojo-home':
@@ -23,7 +23,7 @@ switch ( $nav ) {
 				'content' => esc_html__( 'Traffic &amp; Engagement', 'mojo-marketplace-wp-plugin' ),
 			);
 		}
-		if ( 'bluehost' == mm_brand() ) {
+		if ( 'bluehost' === mm_brand() ) {
 			$subnav[3] = array(
 				'class'   => 'scroll',
 				'href'    => '#performance',
@@ -37,66 +37,7 @@ switch ( $nav ) {
 		}
 		ksort( $subnav );
 		break;
-	case 'mojo-marketplace':
-		$subnav = array(
-			'themes'   => array(
-				'href'    => add_query_arg(
-					array(
-						'page'    => 'mojo-marketplace',
-						'section' => 'themes',
-					),
-					admin_url( 'admin.php' )
-				),
-				'content' => esc_html__( 'Themes', 'mojo-marketplace-wp-plugin' ),
-			),
-			'plugins'  => array(
-				'href'    => add_query_arg(
-					array(
-						'page'    => 'mojo-marketplace',
-						'section' => 'plugins',
-					),
-					admin_url( 'admin.php' )
-				),
-				'content' => esc_html__( 'Plugins', 'mojo-marketplace-wp-plugin' ),
-			),
-			'services' => array(
-				'href'    => add_query_arg(
-					array(
-						'page'    => 'mojo-marketplace',
-						'section' => 'services',
-					),
-					admin_url( 'admin.php' )
-				),
-				'content' => esc_html__( 'Services', 'mojo-marketplace-wp-plugin' ),
-			),
-			'graphics' => array(
-				'href'    => add_query_arg(
-					array(
-						'page'    => 'mojo-marketplace',
-						'section' => 'graphics',
-					),
-					admin_url( 'admin.php' )
-				),
-				'content' => esc_html__( 'Graphics', 'mojo-marketplace-wp-plugin' ),
-			),
-		);
-		if ( false !== get_transient( '_mm_session_token' ) ) {
-			$subnav['purchases'] = array(
-				'href'    => add_query_arg(
-					array(
-						'page'    => 'mojo-marketplace',
-						'section' => 'purchases',
-					),
-					admin_url( 'admin.php' )
-				),
-				'content' => esc_html__( 'My Purchases', 'mojo-marketplace-wp-plugin' ),
-			);
-		}
 
-		if ( isset( $_GET['section'] ) && array_key_exists( $_GET['section'], $subnav ) ) {
-			$subnav[ $_GET['section'] ]['active'] = true;
-		}
-		break;
 	case 'mojo-performance':
 		$subnav = array(
 			array(
@@ -104,7 +45,7 @@ switch ( $nav ) {
 				'content' => esc_html__( 'All', 'mojo-marketplace-wp-plugin' ),
 			),
 		);
-		if ( mm_brand() == 'bluehost' ) {
+		if ( mm_brand() === 'bluehost' ) {
 			$subnav[] = array(
 				'href'    => 'https://my.bluehost.com/hosting/wordpress_tools/performance/',
 				'content' => esc_html__( 'CDN', 'mojo-marketplace-wp-plugin' ),
@@ -142,9 +83,9 @@ if ( empty( $subnav ) ) {
 							echo '<li class="active">';
 						}
 						if ( ! isset( $navitem['class'] ) ) {
-							echo '<a href="' . $navitem['href'] . '">' . $navitem['content'] . '</a>';
+							echo '<a href="' . esc_url( $navitem['href'] ) . '">' . wp_kses_post( $navitem['content'] ) . '</a>';
 						} else {
-							echo '<a class="' . $navitem['class'] . '" href="' . $navitem['href'] . '">' . $navitem['content'] . '</a>';
+							echo '<a class="' . esc_attr( $navitem['class'] ) . '" href="' . esc_url( $navitem['href'] ) . '">' . wp_kses_post( $navitem['content'] ) . '</a>';
 						}
 						echo '</li>';
 					}

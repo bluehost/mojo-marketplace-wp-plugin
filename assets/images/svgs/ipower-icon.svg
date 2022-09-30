@@ -1,0 +1,43 @@
+<svg id="ipower_logo" data-name="ipower logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="699" height="799.5" viewBox="0 0 699 799.5">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: #1677a3;
+      }
+
+      .cls-1, .cls-2 {
+        fill-rule: evenodd;
+      }
+
+      .cls-1 {
+        filter: url(#filter);
+      }
+
+      .cls-2 {
+        filter: url(#filter-2);
+      }
+
+      .cls-3 {
+        filter: url(#filter-3);
+      }
+    </style>
+    <filter id="filter" x="0.5" y="153" width="699" height="646.5" filterUnits="userSpaceOnUse">
+      <feFlood result="flood" flood-color="#fff"/>
+      <feComposite result="composite" operator="in" in2="SourceGraphic"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+    </filter>
+    <filter id="filter-2" x="289" y="152" width="121" height="358" filterUnits="userSpaceOnUse">
+      <feFlood result="flood" flood-color="#fff"/>
+      <feComposite result="composite" operator="in" in2="SourceGraphic"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+    </filter>
+    <filter id="filter-3" x="288.5" y="0" width="121" height="121" filterUnits="userSpaceOnUse">
+      <feFlood result="flood" flood-color="#fff"/>
+      <feComposite result="composite" operator="in" in2="SourceGraphic"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <path class="cls-1" d="M550.165,163.007A60.756,60.756,0,0,0,481.3,263.087a0.667,0.667,0,0,0,.261.2C540.485,304.673,579,372.776,579,450.25,579,576.585,476.585,679,350.25,679S121.5,576.585,121.5,450.25c0-76.181,36.552-145.852,93.821-187.426,0.328-.058.185-0.074,0.353-0.263a60.754,60.754,0,1,0-72.9-97.2,0.958,0.958,0,0,1-.438.3C54.481,229.135.5,333.329,0.5,450,0.5,643.023,156.976,799.5,350,799.5S699.5,643.023,699.5,450A349.779,349.779,0,0,0,550.644,163.42,1.258,1.258,0,0,1,550.165,163.007Z" transform="translate(-0.5)"/>
+  <path class="cls-2" d="M410,449.5a60.5,60.5,0,0,1-121,0v-237a60.5,60.5,0,0,1,121,0v237Z" transform="translate(-0.5)"/>
+  <circle class="cls-3" cx="349" cy="60.5" r="60.5"/>
+</svg>
