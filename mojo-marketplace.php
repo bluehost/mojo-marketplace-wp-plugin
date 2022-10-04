@@ -24,6 +24,9 @@ define( 'MM_VERSION', '1.6.1' );
 define( 'MM_FILE', __FILE__ );
 define( 'MM_BASE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MM_BASE_URL', plugin_dir_url( __FILE__ ) );
+if ( ! defined( 'NFD_HIIVE_URL' ) ) {
+	define( 'NFD_HIIVE_URL', 'https://hiive.cloud/api' );
+}
 
 global $pagenow;
 if ( 'plugins.php' === $pagenow ) {
