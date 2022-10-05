@@ -5,7 +5,7 @@
  * @package MojoMarketplace
  */
 
-use Endurance_WP_Plugin_Updater\Updater;
+use WP_Forge\WPUpdateHandler\PluginUpdater;
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\ModuleLoader\Plugin;
 
@@ -81,4 +81,16 @@ if ( version_compare( PHP_VERSION, '5.3.29' ) >= 0 ) {
 
 mm_require( MM_BASE_DIR . 'inc/admin-page-notifications-blocker.php' );
 
-new Updater( 'bluehost', 'mojo-marketplace-wp-plugin', plugin_basename( MM_FILE ) );
+// Set up the updater endpoint and map values
+$mojo_update_url     = 'https://hiive.cloud/workers/release-api/plugins/bluehost/mojo-marketplace-wp-plugin?file=mojo-marketplace.php'; // Custom API GET endpoint
+$mojo_plugin_updater = new PluginUpdater( MM_FILE, $mojo_update_url );
+$mojo_plugin_updater->setDataMap(
+	array(
+		'version'       => 'version.latest',
+		'download_link' => 'download',
+		'last_updated'  => 'updated',
+		'requires'      => 'requires.wp',
+		'requires_php'  => 'requires.php',
+		'tested'        => 'tested.wp',
+	)
+);
