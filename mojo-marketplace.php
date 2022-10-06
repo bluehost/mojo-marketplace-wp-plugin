@@ -2,9 +2,9 @@
 /**
  * Plugin Name: MOJO Marketplace
  * Description: This plugin adds shortcodes, widgets, and themes to your WordPress site.
- * Version: 1.6.2
- * Author: Mike Hansen
- * Author URI: http://mikehansen.me?utm_campaign=plugin&utm_source=mojo_wp_plugin
+ * Version: 1.7.0
+ * Author: Bluehost
+ * Author URI: https://bluehost.com
  * Requires at least: 4.7
  * Requires PHP: 5.3
  * Text Domain: mojo-marketplace-wp-plugin
@@ -20,11 +20,13 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'MM_VERSION', '1.6.1' );
+define( 'MM_VERSION', '1.7.0' );
 define( 'MM_FILE', __FILE__ );
 define( 'MM_BASE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MM_BASE_URL', plugin_dir_url( __FILE__ ) );
-define( 'MM_ASSETS_URL', 'https://www.mojomarketplace.com/mojo-plugin-assets/' );
+if ( ! defined( 'NFD_HIIVE_URL' ) ) {
+	define( 'NFD_HIIVE_URL', 'https://hiive.cloud/api' );
+}
 
 global $pagenow;
 if ( 'plugins.php' === $pagenow ) {

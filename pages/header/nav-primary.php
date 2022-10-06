@@ -1,19 +1,18 @@
 <?php
-$page = sanitize_key( $_GET['page'] );
-$nav  = array(
-	'mojo-marketplace' => array(
-		'href'    => add_query_arg( array( 'page' => 'mojo-marketplace' ), admin_url( 'admin.php' ) ),
-		'content' => esc_html__( 'Marketplace', 'mojo-marketplace-wp-plugin' ),
-	),
-
+$mojo_page = sanitize_key( $_GET['page'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+$nav       = array(
 	'mojo-performance' => array(
 		'href'    => add_query_arg( array( 'page' => 'mojo-performance' ), admin_url( 'admin.php' ) ),
 		'content' => esc_html__( 'Performance', 'mojo-marketplace-wp-plugin' ),
 	),
-
 );
 
-if ( 'bluehost' == mm_brand() || 'bluehost-india' == mm_brand() ) {
+$nav['mojo-marketplace-page'] = array(
+	'href'    => add_query_arg( array( 'page' => 'mojo-marketplace-page' ), admin_url( 'admin.php' ) ),
+	'content' => esc_html__( 'Marketplace', 'mojo-marketplace-wp-plugin' ),
+);
+
+if ( 'bluehost' === mm_brand() || 'bluehost-india' === mm_brand() ) {
 	$home = array(
 		'mojo-home' => array(
 			'href'    => add_query_arg( array( 'page' => 'mojo-home' ), admin_url( 'admin.php' ) ),
@@ -23,15 +22,15 @@ if ( 'bluehost' == mm_brand() || 'bluehost-india' == mm_brand() ) {
 	$nav  = $home + $nav;
 }
 
-if ( 'bluehost' == mm_brand() || 'bluehost-india' == mm_brand() ) {
+if ( 'bluehost' === mm_brand() || 'bluehost-india' === mm_brand() ) {
 	$nav['mojo-staging'] = array(
 		'href'    => add_query_arg( array( 'page' => 'mojo-staging' ), admin_url( 'admin.php' ) ),
 		'content' => esc_html__( 'Staging', 'mojo-marketplace-wp-plugin' ),
 	);
 }
 
-if ( array_key_exists( $page, $nav ) ) {
-	$nav[ $page ]['active'] = true;
+if ( array_key_exists( $mojo_page, $nav ) ) {
+	$nav[ $mojo_page ]['active'] = true;
 } else {
 	$nav['mojo-home']['active'] = true;
 }
@@ -49,7 +48,7 @@ if ( array_key_exists( $page, $nav ) ) {
 						} else {
 							echo '<li class="active">';
 						}
-						echo '<a href="' . $navitem['href'] . '">' . $navitem['content'] . '</a>';
+						echo '<a href="' . esc_url( $navitem['href'] ) . '">' . wp_kses_post( $navitem['content'] ) . '</a>';
 						echo '</li>';
 					}
 					?>

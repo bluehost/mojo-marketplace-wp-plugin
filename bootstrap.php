@@ -5,7 +5,11 @@
  * @package MojoMarketplace
  */
 
-use Endurance_WP_Plugin_Updater\Updater;
+use WP_Forge\WPUpdateHandler\PluginUpdater;
+use NewfoldLabs\WP\ModuleLoader\Container;
+use NewfoldLabs\WP\ModuleLoader\Plugin;
+
+use function NewfoldLabs\WP\ModuleLoader\container as setContainer;
 
 // Do not access file directly!
 if ( ! defined( 'WPINC' ) ) {
@@ -24,16 +28,42 @@ add_action( 'plugins_loaded', 'mojo_marketplace_load_plugin_textdomain' );
 // Composer autoloader
 require dirname( __FILE__ ) . '/vendor/autoload.php';
 
+/*
+ * Initialize container
+ */
+$mojo_container = new Container();
+
+// Set plugin to container
+$mojo_container->set(
+	'plugin',
+	$mojo_container->service(
+		function () {
+			return new Plugin(
+				array(
+					'id'   => 'mojo',
+					'file' => MM_FILE,
+				)
+			);
+		}
+	)
+);
+
+// Set marketplace brand from mm_brand in container
+if ( get_option( 'mm_brand', false ) ) {
+	$mojo_container->set(
+		'marketplace_brand',
+		strtolower( get_option( 'mm_brand', false ) )
+	);
+}
+
+setContainer( $mojo_container );
+
 require_once MM_BASE_DIR . 'inc/base.php';
-require_once MM_BASE_DIR . 'inc/checkout.php';
 require_once MM_BASE_DIR . 'inc/menu.php';
 require_once MM_BASE_DIR . 'inc/shortcode-generator.php';
-require_once MM_BASE_DIR . 'inc/mojo-themes.php';
 require_once MM_BASE_DIR . 'inc/styles.php';
-require_once MM_BASE_DIR . 'inc/plugin-search.php';
 require_once MM_BASE_DIR . 'inc/jetpack.php';
 require_once MM_BASE_DIR . 'inc/user-experience-tracking.php';
-require_once MM_BASE_DIR . 'inc/notifications.php';
 require_once MM_BASE_DIR . 'inc/staging.php';
 require_once MM_BASE_DIR . 'inc/updates.php';
 require_once MM_BASE_DIR . 'inc/coming-soon.php';
@@ -51,4 +81,16 @@ if ( version_compare( PHP_VERSION, '5.3.29' ) >= 0 ) {
 
 mm_require( MM_BASE_DIR . 'inc/admin-page-notifications-blocker.php' );
 
-new Updater( 'bluehost', 'mojo-marketplace-wp-plugin', plugin_basename( MM_FILE ) );
+// Set up the updater endpoint and map values
+$mojo_update_url     = 'https://hiive.cloud/workers/release-api/plugins/bluehost/mojo-marketplace-wp-plugin?file=mojo-marketplace.php'; // Custom API GET endpoint
+$mojo_plugin_updater = new PluginUpdater( MM_FILE, $mojo_update_url );
+$mojo_plugin_updater->setDataMap(
+	array(
+		'version'       => 'version.latest',
+		'download_link' => 'download',
+		'last_updated'  => 'updated',
+		'requires'      => 'requires.wp',
+		'requires_php'  => 'requires.php',
+		'tested'        => 'tested.wp',
+	)
+);

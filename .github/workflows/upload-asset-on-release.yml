@@ -6,14 +6,39 @@ on:
       - created
       - updated
 
+env:
+  VERSION: ${GITHUB_REF#refs/tags/*}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
+  cancel-in-progress: true
+
 jobs:
-  deploy:
+  build:
     name: On Release
     runs-on: ubuntu-latest
     steps:
 
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Validate version number
+        run: |
+          taggedVersion=${{ env.VERSION }}
+          pluginHeaderVersion=`grep "Version:" mojo-marketplace.php | grep -Eo "[0-9\.]*"`
+          pluginConstantVersion=`grep "'MM_VERSION'," mojo-marketplace.php | grep -Eo "[0-9\.]*"`
+          echo "Tagged version: $taggedVersion"
+          echo "Plugin header version: $pluginHeaderVersion"
+          echo "Plugin constant version: $pluginConstantVersion"
+          [[ "$taggedVersion" == "$pluginHeaderVersion" ]] || exit 1
+          [[ "$taggedVersion" == "$pluginConstantVersion" ]] || exit 1
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          coverage: none
+          tools: composer, cs2pr
 
       - name: Setup Workflow Context
         id: workflow
@@ -25,26 +50,42 @@ jobs:
           echo ::set-output name=DIST::${PWD}/dist
           echo ::set-output name=PACKAGE::${REPO##*/}
 
-      - name: PHP version
-        run: php --version
-
-      - name: Validate composer.json and composer.lock
-        run: composer validate
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: 'npm'
 
       - name: Get Composer Cache Directory
         id: composer-cache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
 
       - name: Cache Composer vendor directory
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-composer-
 
+      - name: Show versions
+        run: |
+          php --version
+          composer --version
+          node --version
+          npm --version
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+
       - name: Install PHP Dependencies
-        run: composer install --no-progress --no-dev --optimize-autoloader
+        run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
+
+      - name: npm install
+        run: npm install --legacy-peer-deps
+
+      - name: Build JavaScript
+        run: npm run build
 
       - name: Prepare files
         run: rsync -r --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
