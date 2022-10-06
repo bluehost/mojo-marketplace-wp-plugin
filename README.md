@@ -1,8 +1,4 @@
-<a href="https://mojomarketplace.com/" target="_blank">
-    <img src="https://raw.githubusercontent.com/bluehost/mojo-marketplace-wp-plugin/master/assets/images/svgs/default-icon.svg" alt="mojo Logo" title="mojo" align="right" height="40" width="40" style="background-color: #24272b; padding: 20px;" />
-</a>
-
-# Mojo WordPress Plugin
+# Mojo Marketplace WordPress Plugin
 
 [![Version Number](https://img.shields.io/github/v/release/bluehost/mojo-marketplace-wp-plugin?color=21a0ed&labelColor=333333)](https://github.com/bluehost/mojo-marketplace-wp-plugin/releases)
 [![Lint PHP](https://github.com/bluehost/mojo-marketplace-wp-plugin/actions/workflows/lint-php.yml/badge.svg?branch=main)](https://github.com/bluehost/mojo-marketplace-wp-plugin/actions/workflows/lint-php.yml)
