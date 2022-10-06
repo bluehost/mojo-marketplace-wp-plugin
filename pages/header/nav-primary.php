@@ -1,15 +1,14 @@
 <?php
 $mojo_page = sanitize_key( $_GET['page'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 $nav       = array(
+	'mojo-marketplace-page' => array(
+		'href'    => add_query_arg( array( 'page' => 'mojo-marketplace-page' ), admin_url( 'admin.php' ) ),
+		'content' => esc_html__( 'Marketplace', 'mojo-marketplace-wp-plugin' ),
+	),
 	'mojo-performance' => array(
 		'href'    => add_query_arg( array( 'page' => 'mojo-performance' ), admin_url( 'admin.php' ) ),
 		'content' => esc_html__( 'Performance', 'mojo-marketplace-wp-plugin' ),
 	),
-);
-
-$nav['mojo-marketplace-page'] = array(
-	'href'    => add_query_arg( array( 'page' => 'mojo-marketplace-page' ), admin_url( 'admin.php' ) ),
-	'content' => esc_html__( 'Marketplace', 'mojo-marketplace-wp-plugin' ),
 );
 
 if ( 'bluehost' === mm_brand() || 'bluehost-india' === mm_brand() ) {
