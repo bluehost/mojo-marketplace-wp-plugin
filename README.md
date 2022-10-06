@@ -7,6 +7,10 @@
 
 WordPress plugin that integrates a WordPress site with Hosting and the Mojo Marketplace.
 
+# Discontinued
+
+New development on this plugin has been discontinued. It has been replaced with a newer plugin. It can be found at https://github.com/newfold-labs/wp-plugin-mojo/ This repo is still here to support existing sites running this plugin.
+
 # Installation
 
 Find the `mojo-marketplace-wp-plugin.zip` asset for your preferred version at: https://github.com/bluehost/mojo-marketplace-wp-plugin/releases/.
