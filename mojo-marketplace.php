@@ -5,8 +5,9 @@
  * Version: 1.7.0
  * Author: Bluehost
  * Author URI: https://bluehost.com
- * Requires at least: 4.7
- * Requires PHP: 5.3
+ * Tested up to: 6.0.2
+ * Requires at least: 5.8
+ * Requires PHP: 5.6
  * Text Domain: mojo-marketplace-wp-plugin
  * Domain Path: /languages
  * License: GPLv2 or later
