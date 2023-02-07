@@ -1,19 +1,26 @@
 <?php
 /**
- * Plugin Name: MOJO Marketplace
- * Description: This plugin adds shortcodes, widgets, and themes to your WordPress site.
- * Version: 1.7.2
- * Author: Bluehost
- * Author URI: https://bluehost.com
- * Tested up to: 6.1.1
- * Requires at least: 5.8
- * Requires PHP: 5.6
- * Text Domain: mojo-marketplace-wp-plugin
- * Domain Path: /languages
- * License: GPLv2 or later
- * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * MOJO Marketplace Plugin
  *
- * @package MojoMarketplace
+ * @package           MojoMarketplace
+ * @author            Newfold Digital
+ * @copyright         Copyright 2023 by Newfold Digital - All rights reserved.
+ * @license           GPL-2.0-or-later
+ *
+ * @wordpress-plugin
+ * Plugin Name:       The MOJO Marketplace
+ * Plugin URI:        https://mojomarketplace.com
+ * Description:       This plugin adds shortcodes, widgets, and themes to your WordPress site.
+ * Version:           1.7.2
+ * Tested up to:      6.1.1
+ * Requires at least: 5.8
+ * Requires PHP:      5.6
+ * Author:            Bluehost
+ * Author URI:        https://bluehost.com
+ * Text Domain:       mojo-marketplace-wp-plugin
+ * Domain Path:       /languages
+ * License:           GPL 2.0 or later
+ * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 // Do not access file directly!
