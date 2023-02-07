@@ -51,7 +51,14 @@ if ( 'plugins.php' === $pagenow ) {
 
 // Check NFD plugins
 require dirname( __FILE__ ) . '/inc/plugin-nfd-compat-check.php';
-$nfd_plugins_check = new NFD_Plugin_Compat_Check( __FILE__ );
+$nfd_plugins_check = new NFD_Plugin_Compat_Check( MM_FILE );
+// Defer to Incompatible plugin, self-deactivate
+$nfd_plugins_check->incompatible_plugins = array(
+	'The Bluehost Plugin'  => 'bluehost-wordpress-plugin/bluehost-wordpress-plugin.php',
+	'The HostGator Plugin' => 'wp-plugin-hostgator/wp-plugin-hostgator.php',
+	'The Web.com Plugin'   => 'wp-plugin-web/wp-plugin-web.php',
+	'The MOJO Plugin'      => 'wp-plugin-mojo/wp-plugin-mojo.php', // new mojo
+);
 // Save val to abort loading if incompatabilities are found
 $pass_nfd_check = $nfd_plugins_check->check_plugin_requirements();
 
