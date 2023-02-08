@@ -1,18 +1,26 @@
 <?php
 /**
- * Plugin Name: MOJO Marketplace
- * Description: This plugin adds shortcodes, widgets, and themes to your WordPress site.
- * Version: 1.7.1
- * Author: Bluehost
- * Author URI: https://bluehost.com
- * Requires at least: 4.7
- * Requires PHP: 5.3
- * Text Domain: mojo-marketplace-wp-plugin
- * Domain Path: /languages
- * License: GPLv2 or later
- * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * MOJO Marketplace Plugin
  *
- * @package MojoMarketplace
+ * @package           MojoMarketplace
+ * @author            Newfold Digital
+ * @copyright         Copyright 2023 by Newfold Digital - All rights reserved.
+ * @license           GPL-2.0-or-later
+ *
+ * @wordpress-plugin
+ * Plugin Name:       The MOJO Marketplace
+ * Plugin URI:        https://mojomarketplace.com
+ * Description:       This plugin adds shortcodes, widgets, and themes to your WordPress site.
+ * Version:           1.7.2
+ * Tested up to:      6.1.1
+ * Requires at least: 5.8
+ * Requires PHP:      5.6
+ * Author:            Bluehost
+ * Author URI:        https://bluehost.com
+ * Text Domain:       mojo-marketplace-wp-plugin
+ * Domain Path:       /languages
+ * License:           GPL 2.0 or later
+ * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 // Do not access file directly!
@@ -20,7 +28,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'MM_VERSION', '1.7.1' );
+define( 'MM_VERSION', '1.7.2' );
 define( 'MM_FILE', __FILE__ );
 define( 'MM_BASE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MM_BASE_URL', plugin_dir_url( __FILE__ ) );
@@ -43,7 +51,14 @@ if ( 'plugins.php' === $pagenow ) {
 
 // Check NFD plugins
 require dirname( __FILE__ ) . '/inc/plugin-nfd-compat-check.php';
-$nfd_plugins_check = new NFD_Plugin_Compat_Check( __FILE__ );
+$nfd_plugins_check = new NFD_Plugin_Compat_Check( MM_FILE );
+// Defer to Incompatible plugin, self-deactivate
+$nfd_plugins_check->incompatible_plugins = array(
+	'The Bluehost Plugin'  => 'bluehost-wordpress-plugin/bluehost-wordpress-plugin.php',
+	'The HostGator Plugin' => 'wp-plugin-hostgator/wp-plugin-hostgator.php',
+	'The Web.com Plugin'   => 'wp-plugin-web/wp-plugin-web.php',
+	'The MOJO Plugin'      => 'wp-plugin-mojo/wp-plugin-mojo.php', // new mojo
+);
 // Save val to abort loading if incompatabilities are found
 $pass_nfd_check = $nfd_plugins_check->check_plugin_requirements();
 
