@@ -42,7 +42,7 @@ $mojo_container->set(
 				array(
 					'id'    => 'mojo',
 					'file'  => MM_FILE,
-					'brand' => get_option( 'mm_brand', 'mojo' )
+					'brand' => get_option( 'mm_brand', 'mojo' ),
 				)
 			);
 		}
