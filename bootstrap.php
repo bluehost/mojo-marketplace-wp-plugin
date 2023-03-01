@@ -40,8 +40,9 @@ $mojo_container->set(
 		function () {
 			return new Plugin(
 				array(
-					'id'   => 'mojo',
-					'file' => MM_FILE,
+					'id'    => 'mojo',
+					'file'  => MM_FILE,
+					'brand' => get_option( 'mm_brand', 'mojo' )
 				)
 			);
 		}
