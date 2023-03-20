@@ -10,7 +10,7 @@
     "url": "https://github.com/mojoness/mojo-marketplace-wp-plugin/issues"
   },
   "homepage": "https://github.com/mojoness/mojo-marketplace-wp-plugin#readme",
-  "author": "Micah Wood <micah@wpscholar.com>",
+  "author": "Micah Wood (https://wpscholar.com)",
   "license": "GPL-2.0+",
   "devDependencies": {
     "@wordpress/scripts": "^26.0.0",
