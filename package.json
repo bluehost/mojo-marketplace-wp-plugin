@@ -10,13 +10,13 @@
     "url": "https://github.com/mojoness/mojo-marketplace-wp-plugin/issues"
   },
   "homepage": "https://github.com/mojoness/mojo-marketplace-wp-plugin#readme",
-  "author": "Micah Wood <micah@wpscholar.com>",
+  "author": "Micah Wood (https://wpscholar.com)",
   "license": "GPL-2.0+",
   "devDependencies": {
-    "@wordpress/scripts": "^23.4.0",
+    "@wordpress/scripts": "^26.0.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.1.7",
-    "node-wp-i18n": "^1.2.3",
+    "node-wp-i18n": "^1.2.7",
     "yaml-lint": "^1.2.4"
   },
   "scripts": {
@@ -43,7 +43,7 @@
     ]
   },
   "dependencies": {
-    "classnames": "^2.3.1",
-    "react-router-dom": "^6.4.1"
+    "classnames": "^2.3.2",
+    "react-router-dom": "^6.9.0"
   }
 }
