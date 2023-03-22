@@ -4,12 +4,12 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mojoness/mojo-marketplace-wp-plugin.git"
+    "url": "git+https://github.com/bluehost/mojo-marketplace-wp-plugin.git"
   },
   "bugs": {
-    "url": "https://github.com/mojoness/mojo-marketplace-wp-plugin/issues"
+    "url": "https://github.com/bluehost/mojo-marketplace-wp-plugin/issues"
   },
-  "homepage": "https://github.com/mojoness/mojo-marketplace-wp-plugin#readme",
+  "homepage": "https://github.com/bluehost/mojo-marketplace-wp-plugin#readme",
   "author": "Micah Wood (https://wpscholar.com)",
   "license": "GPL-2.0+",
   "devDependencies": {
