@@ -1,8 +1,8 @@
-# Copyright (C) 2022 Mike Hansen
-# This file is distributed under the GPLv2 or later.
+# Copyright (C) 2023 Bluehost
+# This file is distributed under the GPL 2.0 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: MOJO Marketplace 1.6.2\n"
+"Project-Id-Version: The MOJO Marketplace 1.7.2\n"
 "Report-Msgid-Bugs-To: https://github.com/bluehost/mojo-marketplace-wp-plugin/issues\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,7 +15,11 @@ msgstr ""
 "X-Domain: mojo-marketplace-wp-plugin\n"
 
 #. Plugin Name of the plugin
-msgid "MOJO Marketplace"
+msgid "The MOJO Marketplace"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://mojomarketplace.com"
 msgstr ""
 
 #. Description of the plugin
@@ -23,11 +27,17 @@ msgid "This plugin adds shortcodes, widgets, and themes to your WordPress site."
 msgstr ""
 
 #. Author of the plugin
-msgid "Mike Hansen"
+#: inc/branding.php:53
+#: inc/coming-soon.php:118
+#: inc/menu.php:23
+#: inc/menu.php:27
+#: inc/updates.php:57
+#: inc/updates.php:65
+msgid "Bluehost"
 msgstr ""
 
 #. Author URI of the plugin
-msgid "http://mikehansen.me?utm_campaign=plugin&utm_source=mojo_wp_plugin"
+msgid "https://bluehost.com"
 msgstr ""
 
 #. translators: %s: installation date
@@ -45,15 +55,6 @@ msgstr ""
 
 #: inc/branding.php:47
 msgid "This plugin integrates your WordPress site with the Bluehost control panel, including performance, security, and update features."
-msgstr ""
-
-#: inc/branding.php:53
-#: inc/coming-soon.php:118
-#: inc/menu.php:23
-#: inc/menu.php:27
-#: inc/updates.php:57
-#: inc/updates.php:65
-msgid "Bluehost"
 msgstr ""
 
 #. translators: 1: opening anchor tag, 2: closing anchor tag
@@ -120,9 +121,9 @@ msgid "Mojo"
 msgstr ""
 
 #: inc/menu.php:43
-#: inc/menu.php:130
+#: inc/menu.php:125
 #: pages/header-small-w-nav.php:30
-#: pages/header/nav-primary.php:14
+#: pages/header/nav-primary.php:18
 msgid "Home"
 msgstr ""
 
@@ -144,34 +145,44 @@ msgstr ""
 msgid "Launch Your Site"
 msgstr ""
 
-#: inc/menu.php:110
+#: inc/menu.php:104
 msgid "Premium"
 msgstr ""
 
-#: inc/menu.php:119
-#: pages/header/nav-primary.php:6
+#: inc/menu.php:113
+#: pages/header/nav-primary.php:10
 #: pages/mojo-home.php:258
 #: pages/mojo-performance.php:42
 msgid "Performance"
 msgstr ""
 
-#: inc/menu.php:142
+#: inc/menu.php:114
+#: pages/header-small.php:14
+#: pages/header.php:76
+#: pages/header/header-no-nav.php:12
+#: pages/header/header.php:14
+#: pages/header/nav-primary.php:6
+#: pages/mojo-marketplace.php:16
+msgid "Marketplace"
+msgstr ""
+
+#: inc/menu.php:137
 msgid "Staging (beta)"
 msgstr ""
 
-#: inc/menu.php:142
+#: inc/menu.php:137
 msgid "Staging <small>(beta)</small>"
 msgstr ""
 
-#: inc/menu.php:164
+#: inc/menu.php:159
 msgid "Staging Feedback"
 msgstr ""
 
-#: inc/menu.php:169
+#: inc/menu.php:164
 msgid "Back to Bluehost"
 msgstr ""
 
-#: inc/menu.php:177
+#: inc/menu.php:172
 msgid "Connect Jetpack"
 msgstr ""
 
@@ -476,13 +487,6 @@ msgstr ""
 msgid "Hosting"
 msgstr ""
 
-#: pages/header-small.php:14
-#: pages/header.php:76
-#: pages/header/header-no-nav.php:12
-#: pages/header/header.php:14
-msgid "Marketplace"
-msgstr ""
-
 #: pages/header.php:21
 msgid "Toggle navigation"
 msgstr ""
@@ -507,7 +511,7 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: pages/header/nav-primary.php:23
+#: pages/header/nav-primary.php:27
 #: pages/mojo-home.php:177
 msgid "Staging"
 msgstr ""
