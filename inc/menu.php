@@ -44,7 +44,7 @@ add_action( 'admin_menu', 'mm_main_menu' );
 function mm_main_menu_fix_subdomain_label() {
 	global $submenu;
 	if ( isset( $submenu['mojo-marketplace'] ) && is_array( $submenu['mojo-marketplace'] ) ) {
-		if (  'mojo-marketplace' === $submenu['mojo-marketplace'][0][2] ) {
+		if ( 'mojo-marketplace' === $submenu['mojo-marketplace'][0][2] ) {
 			if ( 'bluehost' === mm_brand() || 'bluehost-india' === mm_brand() ) {
 				$submenu['mojo-marketplace'][0][0] = __( 'Home', 'mojo-marketplace-wp-plugin' ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 			} else {
@@ -61,8 +61,8 @@ add_action( 'admin_menu', 'mm_main_menu_fix_subdomain_label', 11 );
 
 /**
  * Add toolbar item hook
- * 
- * @param $admin_bar Admin bar
+ *
+ * @param WP_Admin_Bar $admin_bar Admin bar
  */
 function mm_add_tool_bar_items( $admin_bar ) {
 	if ( current_user_can( 'manage_options' ) ) {
@@ -240,6 +240,7 @@ function mm_enqueue_scripts() {
 	wp_enqueue_style(
 		'mojo-marketplace',
 		plugins_url( 'build/marketplace.css', MM_FILE ),
+		null,
 		MM_VERSION
 	);
 	wp_enqueue_script(
