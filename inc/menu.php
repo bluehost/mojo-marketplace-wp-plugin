@@ -97,18 +97,6 @@ function mm_marketplace_page() {
 	mm_require( MM_BASE_DIR . 'pages/mojo-marketplace.php' );
 }
 
-function mm_plugins_premium_link() {
-	?>
-	<script type="text/javascript">
-		jQuery(document).ready(function ($) {
-			$('.wp-filter .filter-links li:last-of-type').after('<li><a style="text-decoration: none;" onclick="location.href=\'admin.php?page=mojo-plugins\'"><?php esc_html_e( 'Premium', 'mojo-marketplace-wp-plugin' ); ?></a></li>');
-		});
-	</script>
-	<?php
-}
-
-add_action( 'admin_head-plugin-install.php', 'mm_plugins_premium_link' );
-
 function mm_performance_menu() {
 	add_submenu_page( 'mojo-marketplace', esc_html__( 'Performance', 'mojo-marketplace-wp-plugin' ), esc_html__( 'Performance', 'mojo-marketplace-wp-plugin' ), 'manage_options', 'mojo-performance', 'mm_performance_page' );
 	add_submenu_page( 'mojo-marketplace', esc_html__( 'Marketplace', 'mojo-marketplace-wp-plugin' ), esc_html__( 'Marketplace', 'mojo-marketplace-wp-plugin' ), 'manage_options', 'mojo-marketplace-page', 'mm_marketplace_page' );
