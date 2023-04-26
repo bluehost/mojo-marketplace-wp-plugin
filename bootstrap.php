@@ -105,7 +105,7 @@ $mojo_plugin_updater->setDataMap(
 
 /**
  * Filter to add applicable BN code to paypal requests
- * 
+ *
  * https://github.com/newfold-labs/wp-module-ecommerce/blob/trunk/bootstrap.php#L31-L57
  */
 if ( function_exists( 'add_filter' ) ) {
