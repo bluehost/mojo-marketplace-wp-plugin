@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Mojo Marketplace Plugin Main Menu
+ */
 function mm_main_menu() {
 	$icon_hash = get_transient( 'mm_icon_hash', false );
 	if ( false === $icon_hash ) {
@@ -35,17 +38,20 @@ function mm_main_menu() {
 
 add_action( 'admin_menu', 'mm_main_menu' );
 
+/**
+ * Fix Main menu label
+ */
 function mm_main_menu_fix_subdomain_label() {
 	global $submenu;
 	if ( isset( $submenu['mojo-marketplace'] ) && is_array( $submenu['mojo-marketplace'] ) ) {
-		if ( $submenu['mojo-marketplace'][0][2] === 'mojo-marketplace' ) {
-			if ( 'bluehost' == mm_brand() || 'bluehost-india' == mm_brand() ) {
-				$submenu['mojo-marketplace'][0][0] = __( 'Home', 'mojo-marketplace-wp-plugin' );
+		if ( 'mojo-marketplace' === $submenu['mojo-marketplace'][0][2] ) {
+			if ( 'bluehost' === mm_brand() || 'bluehost-india' === mm_brand() ) {
+				$submenu['mojo-marketplace'][0][0] = __( 'Home', 'mojo-marketplace-wp-plugin' ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 			} else {
 				unset( $submenu['mojo-marketplace'][0] );
 			}
 		}
-		if ( $submenu['mojo-marketplace'][1][2] === 'mojo-marketplace' ) {
+		if ( 'mojo-marketplace' === $submenu['mojo-marketplace'][1][2] ) {
 			unset( $submenu['mojo-marketplace'][1] );
 		}
 	}
@@ -53,6 +59,11 @@ function mm_main_menu_fix_subdomain_label() {
 
 add_action( 'admin_menu', 'mm_main_menu_fix_subdomain_label', 11 );
 
+/**
+ * Add toolbar item hook
+ *
+ * @param WP_Admin_Bar $admin_bar Admin bar
+ */
 function mm_add_tool_bar_items( $admin_bar ) {
 	if ( current_user_can( 'manage_options' ) ) {
 		if ( mm_is_staging() ) {
@@ -93,22 +104,16 @@ function mm_add_tool_bar_items( $admin_bar ) {
 
 add_action( 'admin_bar_menu', 'mm_add_tool_bar_items', 100 );
 
+/**
+ * Marketplace Page
+ */
 function mm_marketplace_page() {
 	mm_require( MM_BASE_DIR . 'pages/mojo-marketplace.php' );
 }
 
-function mm_plugins_premium_link() {
-	?>
-	<script type="text/javascript">
-		jQuery(document).ready(function ($) {
-			$('.wp-filter .filter-links li:last-of-type').after('<li><a style="text-decoration: none;" onclick="location.href=\'admin.php?page=mojo-plugins\'"><?php esc_html_e( 'Premium', 'mojo-marketplace-wp-plugin' ); ?></a></li>');
-		});
-	</script>
-	<?php
-}
-
-add_action( 'admin_head-plugin-install.php', 'mm_plugins_premium_link' );
-
+/**
+ * Performance and Marketplace Menu Items
+ */
 function mm_performance_menu() {
 	add_submenu_page( 'mojo-marketplace', esc_html__( 'Performance', 'mojo-marketplace-wp-plugin' ), esc_html__( 'Performance', 'mojo-marketplace-wp-plugin' ), 'manage_options', 'mojo-performance', 'mm_performance_page' );
 	add_submenu_page( 'mojo-marketplace', esc_html__( 'Marketplace', 'mojo-marketplace-wp-plugin' ), esc_html__( 'Marketplace', 'mojo-marketplace-wp-plugin' ), 'manage_options', 'mojo-marketplace-page', 'mm_marketplace_page' );
@@ -116,10 +121,16 @@ function mm_performance_menu() {
 
 add_action( 'admin_menu', 'mm_performance_menu' );
 
+/**
+ * Performance Page
+ */
 function mm_performance_page() {
 	mm_require( MM_BASE_DIR . 'pages/mojo-performance.php' );
 }
 
+/**
+ * Home Menu Item
+ */
 function mm_home_menu() {
 	if ( 'bluehost' == mm_brand() || 'bluehost-india' == mm_brand() ) {
 		add_submenu_page( 'mojo-marketplace', esc_html__( 'Home', 'mojo-marketplace-wp-plugin' ), esc_html__( 'Home', 'mojo-marketplace-wp-plugin' ), 'manage_options', 'mojo-home', 'mm_home_page', 0 );
@@ -128,10 +139,16 @@ function mm_home_menu() {
 
 add_action( 'admin_menu', 'mm_home_menu' );
 
+/**
+ * Home Page
+ */
 function mm_home_page() {
 	mm_require( MM_BASE_DIR . 'pages/mojo-home.php' );
 }
 
+/**
+ * Staging Menu Item for Bluehost
+ */
 function mm_staging_menu() {
 	if ( 'bluehost' == mm_brand() || 'bluehost-india' == mm_brand() ) {
 		add_submenu_page( 'mojo-marketplace', esc_html__( 'Staging (beta)', 'mojo-marketplace-wp-plugin' ), __( 'Staging <small>(beta)</small>', 'mojo-marketplace-wp-plugin' ), 'manage_options', 'mojo-staging', 'mm_staging_page' );
@@ -140,6 +157,9 @@ function mm_staging_menu() {
 
 add_action( 'admin_menu', 'mm_staging_menu' );
 
+/**
+ * Staging Page
+ */
 function mm_staging_page() {
 	$env = get_option( 'staging_environment' );
 	switch ( $env ) {
@@ -159,6 +179,9 @@ function mm_staging_page() {
 	echo "<a target='_blank' href='https://goo.gl/forms/HNmqYgRkpzu9KQfM2' style='z-index: 10;position: fixed; padding: 4px 10px; color: #fff;background-color: #000;right:0px;bottom:0px;'>" . esc_html__( 'Staging Feedback', 'mojo-marketplace-wp-plugin' ) . '</a>';
 }
 
+/**
+ * Hosting Menu Item for bluehost
+ */
 function mm_hosting_menu() {
 	if ( 'bluehost' == mm_brand() ) {
 		add_submenu_page( 'mojo-marketplace', __( 'Back to Bluehost', 'mojo-marketplace-wp-plugin' ), __( 'Back to Bluehost', 'mojo-marketplace-wp-plugin' ), 'manage_options', 'mojo-hosting-panel', '__return_false' );
@@ -167,6 +190,9 @@ function mm_hosting_menu() {
 
 add_action( 'admin_menu', 'mm_hosting_menu' );
 
+/**
+ * Jetpack Connect Menu Item for bluehost
+ */
 function mm_jetpack_connect_menu() {
 	if ( 'bluehost' == mm_brand() ) {
 		add_submenu_page( null, __( 'Connect Jetpack', 'mojo-marketplace-wp-plugin' ), __( 'Connect Jetpack', 'mojo-marketplace-wp-plugin' ), 'manage_options', 'mojo-jetpack-connect-bounce', '__return_false' );
@@ -175,6 +201,9 @@ function mm_jetpack_connect_menu() {
 
 add_action( 'admin_menu', 'mm_jetpack_connect_menu' );
 
+/**
+ * Menu Redirects
+ */
 function mm_menu_redirects() {
 	if ( isset( $_GET['page'] ) ) {
 		if ( 'mojo-marketplace' == $_GET['page'] && ! isset( $_GET['section'] ) ) {
@@ -204,30 +233,35 @@ add_action( 'admin_init', 'mm_menu_redirects' );
 
 add_action( 'admin_enqueue_scripts', 'mm_enqueue_scripts' );
 
+/**
+ * Enqueue Scripts
+ */
 function mm_enqueue_scripts() {
 	wp_enqueue_style(
 		'mojo-marketplace',
-		plugins_url( 'build/marketplace.css', MM_FILE )
+		plugins_url( 'build/marketplace.css', MM_FILE ),
+		null,
+		MM_VERSION
 	);
 	wp_enqueue_script(
 		'mojo-marketplace',
 		plugins_url( 'build/marketplace.js', MM_FILE ),
-		[
+		array(
 			'wp-api-fetch',
 			'wp-components',
 			'wp-dom-ready',
 			'wp-element',
 			'wp-i18n',
-		],
-		false,
+		),
+		MM_VERSION,
 		true
 	);
 	wp_localize_script(
 		'mojo-marketplace',
 		'mojo',
-		[
+		array(
 			'restUrl'   => get_home_url() . '/index.php?rest_route=',
-			'restNonce' => wp_create_nonce( 'wp_rest' )
-		]
+			'restNonce' => wp_create_nonce( 'wp_rest' ),
+		)
 	);
 }

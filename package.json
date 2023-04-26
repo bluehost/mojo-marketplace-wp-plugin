@@ -13,7 +13,7 @@
   "author": "Micah Wood (https://wpscholar.com)",
   "license": "GPL-2.0+",
   "devDependencies": {
-    "@wordpress/scripts": "^26.0.0",
+    "@wordpress/scripts": "^26.3.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.1.7",
     "node-wp-i18n": "^1.2.7",
@@ -44,6 +44,6 @@
   },
   "dependencies": {
     "classnames": "^2.3.2",
-    "react-router-dom": "^6.9.0"
+    "react-router-dom": "^6.10.0"
   }
 }
