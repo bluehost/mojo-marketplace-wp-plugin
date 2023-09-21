@@ -106,10 +106,9 @@ $mojo_plugin_updater->setDataMap(
 /**
  * Filter to add applicable BN code to paypal requests
  *
- * https://github.com/newfold-labs/wp-module-ecommerce/blob/trunk/bootstrap.php#L31-L57
+ * https://github.com/newfold-labs/wp-module-ecommerce/blob/trunk/bootstrap.php#L62-L101
  */
 if ( function_exists( 'add_filter' ) ) {
-
 	add_filter(
 		'http_request_args',
 		function ( $parsed_args, $url ) {
@@ -134,4 +133,20 @@ if ( function_exists( 'add_filter' ) ) {
 		2
 	);
 
+	add_filter(
+		'script_loader_tag',
+		function ( $tag, $handle, $source ) {
+			if ( stripos( $source, 'paypal.com/sdk' ) !== false ) {
+				$replacement = ' data-partner-attribution-id="Yith_PCP"';
+				if ( stripos( $tag, 'partner-attribution-id' ) === false ) {
+					$tag = str_replace( ' src=', $replacement . ' src=', $tag );
+				} else if ( stripos( $tag, 'NEWFOLD' ) || stripos( $tag, 'YITH' ) ) {
+					$tag = preg_replace( '/ data-partner-attribution-id="(.*?)"/', $replacement, $tag );
+				}
+			}
+			return $tag;
+		},
+		25,
+		3
+	);
 }
