@@ -4,15 +4,15 @@
 node_modules
 
 # Files
-.*
+/.*
 
 # File Types
-*.json
-*.lock
-*.log
-*.md
-*.sql
-*.tar.gz
-*.xml
-*.yml
-*.zip
+/*.json
+/*.lock
+/*.log
+/*.md
+/*.sql
+/*.tar.gz
+/*.xml
+/*.yml
+/*.zip
