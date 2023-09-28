@@ -4,9 +4,7 @@
 node_modules
 
 # Files
-.distignore
-.gitattributes
-.gitignore
+.*
 
 # File Types
 *.json
