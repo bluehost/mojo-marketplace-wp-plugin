@@ -4,17 +4,15 @@
 node_modules
 
 # Files
-.distignore
-.gitattributes
-.gitignore
+/.*
 
 # File Types
-*.json
-*.lock
-*.log
-*.md
-*.sql
-*.tar.gz
-*.xml
-*.yml
-*.zip
+/*.json
+/*.lock
+/*.log
+/*.md
+/*.sql
+/*.tar.gz
+/*.xml
+/*.yml
+/*.zip
