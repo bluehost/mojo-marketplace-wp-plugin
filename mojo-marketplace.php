@@ -10,6 +10,7 @@
  * @wordpress-plugin
  * Plugin Name:       The MOJO Marketplace
  * Plugin URI:        https://mojomarketplace.com
+ * Update URI:        https://github.com/bluehost/mojo-marketplace-wp-plugin/
  * Description:       This plugin adds shortcodes, widgets, and themes to your WordPress site.
  * Version:           1.7.9
  * Tested up to:      6.3.2
