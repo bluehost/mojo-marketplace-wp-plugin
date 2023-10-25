@@ -81,8 +81,17 @@ jobs:
       - name: Install PHP Dependencies
         run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
 
-      - name: npm install
+      - name: NPM Install
         run: npm install --legacy-peer-deps
+
+      - name: Validate WP Versions
+        if: ${{ (github.repository == 'bluehost/mojo-marketplace-wp-plugin') && (github.event.release.prerelease == false) }}
+        run: |
+          wpEnvVersion=`grep "WordPress/WordPress#tags/" .wp-env.json | grep -Eo "[0-9\.]*"`
+          pluginHeaderTestedVersion=`grep "Tested up to:" mojo-marketplace.php | grep -Eo "[0-9\.]*"`
+          echo "wp-env version: $wpEnvVersion"
+          echo "Plugin header tested version: $pluginHeaderTestedVersion"
+          [[ "$wpEnvVersion" == "$pluginHeaderTestedVersion" ]] || exit 1
 
       - name: Build JavaScript
         run: npm run build
