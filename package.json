@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@wordpress/scripts": "^26.15.0",
-    "husky": "^8.0.3",
+    "husky": "^9.0.10",
     "lint-staged": "^15.0.2",
     "node-wp-i18n": "^1.2.7",
     "yaml-lint": "^1.2.4"
