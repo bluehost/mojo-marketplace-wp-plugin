@@ -11,8 +11,8 @@
  * Plugin Name:       The MOJO Marketplace
  * Plugin URI:        https://mojomarketplace.com
  * Description:       This plugin adds shortcodes, widgets, and themes to your WordPress site.
- * Version:           1.7.9
- * Tested up to:      6.3.2
+ * Version:           1.8.0
+ * Tested up to:      6.6.1
  * Requires at least: 5.8
  * Requires PHP:      5.6
  * Author:            Bluehost
@@ -28,7 +28,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'MM_VERSION', '1.7.9' );
+define( 'MM_VERSION', '1.8.0' );
 define( 'MM_FILE', __FILE__ );
 define( 'MM_BASE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MM_BASE_URL', plugin_dir_url( __FILE__ ) );
