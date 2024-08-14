@@ -529,16 +529,16 @@
         },
         {
             "name": "wp-forge/helpers",
-            "version": "1.1.1",
+            "version": "2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-forge/helpers.git",
-                "reference": "59e97eeeba51f195f8f7478efb6820295ae218e4"
+                "reference": "28ebc09a3390dbff427270a4ed2b93395e8b9b78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-forge/helpers/zipball/59e97eeeba51f195f8f7478efb6820295ae218e4",
-                "reference": "59e97eeeba51f195f8f7478efb6820295ae218e4",
+                "url": "https://api.github.com/repos/wp-forge/helpers/zipball/28ebc09a3390dbff427270a4ed2b93395e8b9b78",
+                "reference": "28ebc09a3390dbff427270a4ed2b93395e8b9b78",
                 "shasum": ""
             },
             "require": {
@@ -567,9 +567,9 @@
             "description": "A collection of helpers for WordPress and PHP development.",
             "support": {
                 "issues": "https://github.com/wp-forge/helpers/issues",
-                "source": "https://github.com/wp-forge/helpers/tree/1.1.1"
+                "source": "https://github.com/wp-forge/helpers/tree/2.0"
             },
-            "time": "2021-07-15T11:41:27+00:00"
+            "time": "2022-01-06T13:10:47+00:00"
         },
         {
             "name": "wp-forge/wp-options",
@@ -655,20 +655,20 @@
         },
         {
             "name": "wp-forge/wp-update-handler",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-forge/wp-update-handler.git",
-                "reference": "deb2beae787381158dc8c60b1cdcd241333a8784"
+                "reference": "4dbc5e0dd4dfbb5808f9d53b1b3afd65c3db7435"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-forge/wp-update-handler/zipball/deb2beae787381158dc8c60b1cdcd241333a8784",
-                "reference": "deb2beae787381158dc8c60b1cdcd241333a8784",
+                "url": "https://api.github.com/repos/wp-forge/wp-update-handler/zipball/4dbc5e0dd4dfbb5808f9d53b1b3afd65c3db7435",
+                "reference": "4dbc5e0dd4dfbb5808f9d53b1b3afd65c3db7435",
                 "shasum": ""
             },
             "require": {
-                "wp-forge/helpers": "^1.1"
+                "wp-forge/helpers": "^2.0"
             },
             "require-dev": {
                 "wpscholar/phpcs-standards-wpscholar": "^1.0"
@@ -692,9 +692,9 @@
             "description": "A WordPress package for updating custom plugins and themes based on an API response from a custom update server.",
             "support": {
                 "issues": "https://github.com/wp-forge/wp-update-handler/issues",
-                "source": "https://github.com/wp-forge/wp-update-handler/tree/1.0.1"
+                "source": "https://github.com/wp-forge/wp-update-handler/tree/1.0.2"
             },
-            "time": "2022-08-26T17:36:12+00:00"
+            "time": "2024-02-16T18:07:08+00:00"
         },
         {
             "name": "wp-forge/wp-upgrade-handler",
@@ -4807,5 +4807,5 @@
     "platform-overrides": {
         "php": "7.0.0"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
