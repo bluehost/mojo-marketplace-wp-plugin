@@ -38,7 +38,7 @@
     "wp-forge/wp-update-handler": "^1.0"
   },
   "require-dev": {
-    "newfold-labs/wp-php-standards": "^1.2.2",
+    "newfold-labs/wp-php-standards": "^1.2.4",
     "wp-cli/i18n-command": "^2.4.4",
     "wp-cli/wp-cli-bundle": "^2.9"
   },
