@@ -9,17 +9,4 @@ WordPress plugin that integrates a WordPress site with Hosting and the Mojo Mark
 
 # Discontinued
 
-New development on this plugin has been discontinued. It has been replaced with a newer plugin. It can be found at https://github.com/newfold-labs/wp-plugin-mojo/ This repo is still here to support existing sites running this plugin.
-
-# Installation
-
-Find the `mojo-marketplace-wp-plugin.zip` asset for your preferred version at: https://github.com/bluehost/mojo-marketplace-wp-plugin/releases/.
-
-Alternatively, check the updater endpoint for the latest version at: https://hiive.cloud/workers/release-api/plugins/bluehost/mojo-marketplace-wp-plugin?file=mojo-marketplace.php, this also includes a download link to the latest zip file or use this link to access the latest download: https://hiive.cloud/workers/release-api/plugins/bluehost/mojo-marketplace-wp-plugin/download/?file=mojo-marketplace.php.
-
-# Releasing Updates
-
-This plugin has version number set in 2 places in 1 file (mojo-marketplace-wp-plugin/mojo-marketplace.php):
-
-- the plugin header info
-- the constant MM_VERSION
+New development on this plugin has finally been discontinued. It has been superseded with a newer plugin. It can be found at https://github.com/newfold-labs/wp-plugin-mojo/ This repo is still here to support existing sites running this plugin.
