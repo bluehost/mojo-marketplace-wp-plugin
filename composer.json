@@ -3,6 +3,7 @@
   "description": "WordPress plugin that has shortcodes, widgets and themes.",
   "type": "wordpress-plugin",
   "license": "GPL-2.0-or-later",
+  "abandoned": "newfold-labs/wp-plugin-mojo",
   "authors": [
     {
       "name": "Mike Hansen",
